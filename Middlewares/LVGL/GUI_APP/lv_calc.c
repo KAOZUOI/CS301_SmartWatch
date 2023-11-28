@@ -23,7 +23,142 @@ static void lv_100ask_calc_accept(lv_obj_t *obj, lv_100ask_calc_token_t token);
 static void lv_100ask_calc_error(lv_100ask_calc_error_t error_code ,lv_100ask_calc_error_t err);
 static void lv_100ask_calc_tokenizer_next(lv_obj_t *obj);
 static bool lv_100ask_calc_tokenizer_finished(lv_100ask_calc_token_t current_token, char *curr_char);
-static int lv_100ask_calc_expr(lv_obj_t *obj);
+static lv_100ask_calc_token_t lv_100ask_calc_siglechar_binary(char *curr_char);
+static int lv_100ask_calc_term_binary(lv_obj_t *obj);
+static int lv_100ask_calc_expr_binary(lv_obj_t *obj);
+
+void parse_equation(const char* input, equation_coeffs_t* coeffs) {
+    coeffs->a = 0;
+    coeffs->b = 0;
+    coeffs->c = 0;
+    coeffs->degree = 0;
+
+    float temp_coeff = 0;
+    int temp_degree = 0;
+    char* p = (char*)input;
+
+    while (*p) {
+        if (sscanf(p, "%f", &temp_coeff) == 1) {
+            // jump to the next non-digit character
+            while (*p != ' ' && *p != '\0' && *p != 'x') p++;
+
+            // check if there is a x suffix
+            if (*p == 'x') {
+                p++;
+                if (*p == '^') {
+                    p++;
+                    if (sscanf(p, "%d", &temp_degree) == 1) {
+                        // parse the degree
+                        if (temp_degree == 2) coeffs->a = temp_coeff;
+                        while (isdigit(*p)) p++;
+                    }
+                } else {
+                    coeffs->b = temp_coeff; // coefficient of x
+                    if (coeffs->degree == 0) coeffs->degree = 1;
+                }
+            } else {
+                coeffs->c = temp_coeff; // constant
+            }
+        } else {
+            // check if coefficient is omitted
+            if (*p == 'x') {
+                p++;
+                if (*p == '^') {
+                    p++;
+                    if (sscanf(p, "%d", &temp_degree) == 1 && temp_degree == 2) {
+                        coeffs->a = 1; // omit coefficient, default to 1
+                        coeffs->degree = 2;
+                        while (isdigit(*p)) p++;
+                    }
+                } else {
+                    coeffs->b = 1; // omit coefficient, default to 1
+                    if (coeffs->degree == 0) coeffs->degree = 1;
+                }
+            } else {
+                p++;
+            }
+        }
+    }
+}
+
+void solve_linear_equation(const equation_coeffs_t* coeffs, char* output) {
+    if (coeffs->a == 0) {
+        sprintf(output, "error in linear equation");
+        return;
+    }
+    float x = -coeffs->b / coeffs->a;
+    sprintf(output, "x = %f", x);
+}
+
+void solve_quadratic_equation(const equation_coeffs_t* coeffs, char* output) {
+    float a = coeffs->a, b = coeffs->b, c = coeffs->c;
+    float discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) {
+        sprintf(output, "error in quadratic equation");
+    } else if (discriminant == 0) {
+        float x = -b / (2 * a);
+        sprintf(output, "x = %f", x);
+    } else {
+        float x1 = (-b + sqrt(discriminant)) / (2 * a);
+        float x2 = (-b - sqrt(discriminant)) / (2 * a);
+        sprintf(output, "x = %f | x = %f", x1, x2);
+    }
+}
+
+void int_to_binary_string(int value, char *buffer, int buffer_size) {
+    buffer[buffer_size - 1] = '\0'; // make sure the string is null-terminated
+    int index = buffer_size - 2;
+    while (index >= 0) {
+        if (value == 0 && index < buffer_size - 2) {
+            break; // jump out of the loop if the value is zero and we're not on the first iteration
+        }
+        buffer[index] = (value & 1) ? '1' : '0';
+        value >>= 1;
+        index--;
+    }
+
+    // move the string to the beginning of the buffer
+    if (index >= 0) {
+        memmove(buffer, &buffer[index + 1], buffer_size - index - 1);
+    }
+}
+
+static int binary_add(int a, int b) {
+    int carry;
+    while (b != 0) {
+        carry = (a & b) << 1;
+        a = a ^ b;
+        b = carry;
+    }
+    return a;
+}
+static int binary_subtract(int a, int b) {
+    int b_complement = binary_add(~b, 1);
+    return binary_add(a, b_complement);
+}
+static int binary_multiply(int a, int b) {
+    int result = 0;
+    while (b != 0) {
+        if (b & 1) {
+            result = binary_add(result, a);
+        }
+        a <<= 1;
+        b >>= 1;
+    }
+    return result;
+}
+
+typedef enum {
+    MODE_STANDARD,
+    MODE_BINARY,
+    MODE_EQUATION
+} calc_mode_t;
+
+static calc_mode_t current_mode = MODE_STANDARD;
+
+
+
+
 
 const lv_obj_class_t lv_100ask_calc_class = {
     .constructor_cb = lv_100ask_calc_constructor,
@@ -33,9 +168,17 @@ const lv_obj_class_t lv_100ask_calc_class = {
     .instance_size  = sizeof(lv_100ask_calc_t),
     .base_class     = &lv_obj_class
 };
-// Key
+// Key map
+static const char * equation_btnm_map[] = { "D", "C", "S", "+", "\n",
+                                            "4", "5", "6", "-", "\n",
+                                            "1", "2", "3", "*", "\n",
+                                            "0", "x", "=", "/", "" };
+
+static const char * binary_btnm_map[] = { "0", "1", "+", "-", "\n",
+                                          "=", "*", "D", "C", "" };
+
 static const char * btnm_map[] = {  "(", ")", "C", "<-", "\n",
-									"x", "B", "^", "/",  "\n",
+									"X", "B", "^", "/",  "\n",
 									"4", "5", "6", "*",  "\n",
 									"1", "2", "3", "-",  "\n",
 									"0", ".", "=", "+",  ""};
@@ -69,8 +212,6 @@ lv_obj_t * lv_100ask_calc_get_btnm(lv_obj_t * obj)
 
     return calc->btnm;
 }
-
-
 lv_obj_t * lv_100ask_calc_get_ta_hist(lv_obj_t * obj)
 {
     LV_ASSERT_OBJ(obj, MY_CLASS);
@@ -78,8 +219,6 @@ lv_obj_t * lv_100ask_calc_get_ta_hist(lv_obj_t * obj)
 
     return calc->ta_hist;
 }
-
-
 lv_obj_t * lv_100ask_calc_get_ta_input(lv_obj_t * obj)
 {
     LV_ASSERT_OBJ(obj, MY_CLASS);
@@ -154,8 +293,7 @@ static void lv_100ask_calc_destructor(const lv_obj_class_t * class_p, lv_obj_t *
 
 }
 
-static void calc_btnm_changed_event_cb(lv_event_t *e)
-{
+static void calc_btnm_changed_event_cb(lv_event_t *e) {
     lv_obj_t * obj = lv_event_get_target(e);
     lv_event_code_t code = lv_event_get_code(e);
     lv_obj_t * user_data = lv_event_get_user_data(e);
@@ -165,64 +303,104 @@ static void calc_btnm_changed_event_cb(lv_event_t *e)
 
     lv_100ask_calc_t * calc = (lv_100ask_calc_t *)user_data;
 
-    if(code == LV_EVENT_VALUE_CHANGED)
-    {
+    if(code == LV_EVENT_VALUE_CHANGED) {
         // Perform operations
-        if (strcmp(txt, "=") == 0)
-        {
-            char tmp_buff[32];
-            int calc_results;
+        if (strcmp(txt, "=") == 0) {
+            if (current_mode != MODE_EQUATION) {
+                
+                char tmp_buff[32];
+                int calc_results;
 
-            // Lexical analyzer
-            lv_100ask_calc_tokenizer_init(user_data, calc->calc_exp);
+                // Lexical analyzer
+                lv_100ask_calc_tokenizer_init(user_data, calc->calc_exp);
 
-            // Calculates the value of the first level priority expression
-            calc_results = lv_100ask_calc_expr(user_data);  
-
-            if (calc->error_code != no_error)
-            {
-                // Find the error code and display the corresponding message
-                for (int i = 0; i < sizeof(error_table); i++)
-                {
-                    if (error_table[i].error_code == calc->error_code)
-                    {
-                        lv_textarea_add_text(calc->ta_hist, "\n");
-                        lv_textarea_add_text(calc->ta_hist, error_table[i].message);
-                        lv_textarea_add_text(calc->ta_hist, "\n");
-                    }
+                // Calculates the value of the first level priority expression
+                if (current_mode == MODE_BINARY) {
+                    calc_results = lv_100ask_calc_expr_binary(user_data);
+                }else{
+                    calc_results = lv_100ask_calc_expr(user_data);  
                 }
-                calc->error_code = no_error;
-            }
-            else
-            {
-                lv_snprintf(tmp_buff, sizeof(tmp_buff), "%s=%d\n", lv_textarea_get_text(calc->ta_input), calc_results);
-                lv_textarea_add_text(calc->ta_hist, tmp_buff);
-                lv_textarea_set_text(calc->ta_input, tmp_buff);
-                // Empty expression
-                lv_memset_00(calc->calc_exp, sizeof(calc->calc_exp));
-                calc->count = 0;
 
-            }
 
+                if (calc->error_code != no_error) {
+                    // Find the error code and display the corresponding message
+                    for (int i = 0; i < sizeof(error_table); i++)
+                    {
+                        if (error_table[i].error_code == calc->error_code)
+                        {
+                            lv_textarea_add_text(calc->ta_hist, "\n");
+                            lv_textarea_add_text(calc->ta_hist, error_table[i].message);
+                            lv_textarea_add_text(calc->ta_hist, "\n");
+                        }
+                    }
+                    calc->error_code = no_error;
+                }
+                else {
+                    if (current_mode == MODE_BINARY) {
+                        char binary_result[33]; // 32 bits + 1 null terminator
+                        int_to_binary_string(calc_results, binary_result, sizeof(binary_result));
+                        lv_snprintf(tmp_buff, sizeof(tmp_buff), "%s=%s\n", lv_textarea_get_text(calc->ta_input), binary_result);
+                    } else {
+                        lv_snprintf(tmp_buff, sizeof(tmp_buff), "%s=%d\n", lv_textarea_get_text(calc->ta_input), calc_results);
+                    }
+                    lv_textarea_add_text(calc->ta_hist, tmp_buff);
+                    lv_textarea_set_text(calc->ta_input, tmp_buff);
+                    // Empty expression
+                    lv_memset_00(calc->calc_exp, sizeof(calc->calc_exp));
+                    calc->count = 0;
+                }
+            }else {
+                lv_textarea_add_text(calc->ta_input, txt);
+                strcat(&calc->calc_exp[0], txt);
+                calc->count++;
+            }
         }
         // clear
-        else if (strcmp(txt, "C") == 0)
-        {
+        else if (strcmp(txt, "C") == 0) {
             lv_textarea_set_text(calc->ta_input, "");
             // Empty expression
             lv_memset_00(calc->calc_exp, sizeof(calc->calc_exp));
             calc->count = 0;
         }
         // del char
-        else if (strcmp(txt, "<-") == 0)             
-        {
+        else if (strcmp(txt, "<-") == 0) {
             lv_textarea_del_char(calc->ta_input);
             calc->calc_exp[calc->count-1] = '\0';
             calc->count--;
         }
+        // change to Binary mode
+        else if (strcmp(txt, "B") == 0) {
+            lv_btnmatrix_set_map(calc->btnm, binary_btnm_map);
+            current_mode = MODE_BINARY;
+        }
+        // change to Standard mode
+        else if (strcmp(txt, "D") == 0) {
+            lv_btnmatrix_set_map(calc->btnm, btnm_map);
+            current_mode = MODE_STANDARD;
+        }
+        // change to Equation mode
+        else if (strcmp(txt, "X") == 0) {
+            lv_btnmatrix_set_map(calc->btnm, equation_btnm_map);
+            current_mode = MODE_EQUATION;
+        }
+        // solve equation
+        else if (strcmp(txt, "S") == 0) {
+            char equation_output[128];
+            equation_coeffs_t coeffs;
+            parse_equation(calc->calc_exp, &coeffs); // 假设 calc_exp 包含输入的方程式
+
+            if (coeffs.degree == 1) {
+                solve_linear_equation(&coeffs, equation_output);
+            } else if (coeffs.degree == 2) {
+                solve_quadratic_equation(&coeffs, equation_output);
+            } else {
+                strcpy(equation_output, "error");
+            }
+
+            lv_textarea_set_text(calc->ta_input, equation_output);
+        }
         // Add char
-        else
-        {
+        else {
             if((calc->count == 0) && (strcmp(lv_textarea_get_text(calc->ta_input), "") == 0))
                 lv_textarea_set_text(calc->ta_input, "");
 
@@ -248,8 +426,6 @@ static void lv_100ask_calc_tokenizer_init(lv_obj_t *obj, char *expr)
     return;
 }
 
-
-
 /**
  * Get a token.
  * @param obj       pointer to a calc object
@@ -263,30 +439,51 @@ static lv_100ask_calc_token_t lv_100ask_calc_get_next_token(lv_obj_t *obj)
     // End of expression
     if (calc->curr_char == '\0')
         return TOKENIZER_ENDOFINPUT;
-
-    if (isdigit(*calc->curr_char))
-    {
-        // The length of the allowed number cannot be exceeded
-        for (i = 0; i <= LV_100ASK_CALC_MAX_NUM_LEN; i++)
-        {
-            if (!isdigit(*(calc->curr_char + i)))
+    if (current_mode == MODE_BINARY) {
+        if (*calc->curr_char == '0' || *calc->curr_char == '1') {
+            for (i = 0; i <= LV_100ASK_CALC_MAX_NUM_LEN && (calc->curr_char[i] == '0' || calc->curr_char[i] == '1'); i++);
+            calc->next_char = calc->curr_char + i;
+            return TOKENIZER_NUMBER;
+        }
+        else if (lv_100ask_calc_siglechar_binary(calc->curr_char)) {
+            calc->next_char++;
+            return lv_100ask_calc_siglechar_binary(calc->curr_char);
+        }
+    }else {
+        if (isdigit(*calc->curr_char)) {
+            // The length of the allowed number cannot be exceeded
+            for (i = 0; i <= LV_100ASK_CALC_MAX_NUM_LEN; i++)
             {
-                calc->next_char = calc->curr_char + i;
-                return TOKENIZER_NUMBER;
+                if (!isdigit(*(calc->curr_char + i)))
+                {
+                    calc->next_char = calc->curr_char + i;
+                    return TOKENIZER_NUMBER;
+                }
             }
         }
-    }
-
-    // Delimiter
-    else if (lv_100ask_calc_siglechar(calc->curr_char))
-    {
-        calc->next_char++;
-        return lv_100ask_calc_siglechar(calc->curr_char);
+        // Delimiter
+        else if (lv_100ask_calc_siglechar(calc->curr_char)) {
+            calc->next_char++;
+            return lv_100ask_calc_siglechar(calc->curr_char);
+        }
     }
 
     return TOKENIZER_ERROR;
 }
 
+static lv_100ask_calc_token_t lv_100ask_calc_siglechar_binary(char *curr_char) {
+    switch (*curr_char) {
+        case '+':
+            return TOKENIZER_PLUS;
+        case '-':
+            return TOKENIZER_MINUS;
+        case '*':
+            return TOKENIZER_ASTR;
+        default:
+            break;
+    }
+    return TOKENIZER_ERROR;
+}
 
 
 /**
@@ -319,6 +516,8 @@ static lv_100ask_calc_token_t lv_100ask_calc_siglechar(char *curr_char)
     return TOKENIZER_ERROR;
 }
 
+
+
 static int lv_100ask_calc_power(int base, int exponent) {
     if (exponent == 0) {
         return 1;
@@ -332,6 +531,39 @@ static int lv_100ask_calc_power(int base, int exponent) {
     return result;
 }
 
+static int lv_100ask_calc_expr_binary(lv_obj_t *obj) {
+    lv_100ask_calc_t * calc = (lv_100ask_calc_t *)obj;
+    int t1, t2 = 0;
+    lv_100ask_calc_token_t op;
+    t1 = lv_100ask_calc_term_binary(obj);
+    op = calc->current_token;
+    while (op == TOKENIZER_PLUS || op == TOKENIZER_MINUS) {
+        lv_100ask_calc_tokenizer_next(obj);
+        t2 = lv_100ask_calc_term_binary(obj);
+        if (op == TOKENIZER_PLUS) {
+            t1 = binary_add(t1, t2);
+        } else if (op == TOKENIZER_MINUS) {
+            t1 = binary_subtract(t1, t2);
+        }
+        op = calc->current_token;
+    }
+    return t1;
+}
+
+static int lv_100ask_calc_term_binary(lv_obj_t *obj) {
+    lv_100ask_calc_t * calc = (lv_100ask_calc_t *)obj;
+    int f1 = lv_100ask_calc_factor(obj);
+    lv_100ask_calc_token_t op = calc->current_token;
+
+    while (op == TOKENIZER_ASTR) {
+        lv_100ask_calc_tokenizer_next(obj);
+        int f2 = lv_100ask_calc_factor(obj);
+        f1 = binary_multiply(f1, f2);
+        op = calc->current_token;
+    }
+
+    return f1;
+}
 /**
  * Calculates the value of the first level priority expression.
  * @param curr_char       pointer to a calc object
@@ -377,8 +609,7 @@ static int lv_100ask_calc_expr(lv_obj_t *obj)
  * @param curr_char       pointer to a calc object
  * @return                Calculation results
  */
-static int lv_100ask_calc_term(lv_obj_t *obj)
-{
+static int lv_100ask_calc_term(lv_obj_t *obj) {
     lv_100ask_calc_t * calc = (lv_100ask_calc_t *)obj;
     int f1, f2;
     lv_100ask_calc_token_t op;
@@ -426,7 +657,6 @@ static int lv_100ask_calc_primary(lv_obj_t *obj) {
 
     return base;
 }
-
 /**
  * Get the value of the current factor. 
  * If the current factor (similar to m in the above formula) is an expression, 
@@ -453,16 +683,16 @@ static int lv_100ask_calc_factor(lv_obj_t *obj)
         case TOKENIZER_LPAREN:
             lv_100ask_calc_accept(obj, TOKENIZER_LPAREN);
             // Treat the value in parentheses as a new expression and calculate recursively (recursion starts with function expr())
-            r = lv_100ask_calc_expr(obj);
+            if (current_mode == MODE_BINARY) {
+                r = lv_100ask_calc_expr_binary(obj);
+            } else {
+                r = lv_100ask_calc_expr(obj);
+            }
             // When the expression in the bracket is processed, the next token must be the right bracket
             lv_100ask_calc_accept(obj, TOKENIZER_RPAREN);
             break;
             // Tokens other than the left parenthesis and numbers have been disposed of by the upper level
             // If there is a token, it must be an expression syntax error
-        case TOKENIZER_POWER:
-            lv_100ask_calc_accept(obj, TOKENIZER_POWER);
-            r = lv_100ask_calc_term(obj);
-            break;
         default:
             lv_100ask_calc_error(calc->error_code, syntax_error);
     }
@@ -479,7 +709,11 @@ static int lv_100ask_calc_factor(lv_obj_t *obj)
  */
 static int lv_100ask_calc_tokenizer_num(char *curr_char)
 {
-    return atoi(curr_char);
+    if (current_mode == MODE_BINARY) {
+        return strtol(curr_char, NULL, 2); // to binary
+    } else {
+        return atoi(curr_char); // to decimal
+    }
 }
 
 
@@ -488,8 +722,7 @@ static int lv_100ask_calc_tokenizer_num(char *curr_char)
  * @param curr_char       pointer to a calc object
  * @param token           token
  */
-static void lv_100ask_calc_accept(lv_obj_t *obj, lv_100ask_calc_token_t token)
-{
+static void lv_100ask_calc_accept(lv_obj_t *obj, lv_100ask_calc_token_t token) {
     lv_100ask_calc_t * calc = (lv_100ask_calc_t *)obj;
 
     if (token != calc->current_token)

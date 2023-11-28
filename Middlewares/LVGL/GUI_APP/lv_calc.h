@@ -20,8 +20,8 @@ typedef enum {
     TOKENIZER_LPAREN,       // (
     TOKENIZER_RPAREN,       // )
     TOKENIZER_POWER,        // ^
-    TOKENIZER_UNKNOWN,      // x
-    TOKENIZER_BINARY,       // B
+    TOKENIZER_UNKNOWN,     // x
+    TOKENIZER_EQUAL,        // =
 } lv_100ask_calc_token_t;
 
 /* Error code */
@@ -36,6 +36,10 @@ typedef struct {
     char   *message;
 } lv_100ask_calc_error_table_t;
 
+typedef struct {
+    float a, b, c; // coefficient
+    int degree; // degree
+} equation_coeffs_t;
 
 /*Data of canvas*/
 typedef struct {

@@ -8,7 +8,7 @@
 ### Chat Component
 ### Calculator Component 
  lvgl_calc transplant from https://github.com/100askTeam/lv_lib_100ask.git  
- Completed: '^' operator and '(' ')' operator
+ Completed: '^' operator and '(' ')' operator  
  Completed: Binary mode  
  TODO: Equation solving part debuging
 ### Photo Album

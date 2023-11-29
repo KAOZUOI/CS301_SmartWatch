@@ -5,7 +5,7 @@
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Include\core_cm3.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Include\cmsis_version.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Include\cmsis_compiler.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -16,7 +16,7 @@
 ..\..\output\lvgl_demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h
@@ -63,7 +63,7 @@
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
 ..\..\output\lvgl_demo.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\lvgl_demo.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h
@@ -79,15 +79,15 @@
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_types.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_timer.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/../hal/lv_hal_tick.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdbool.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdbool.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_math.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_mem.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_async.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_anim_timeline.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_anim.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_printf.h
-..\..\output\lvgl_demo.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdarg.h
+..\..\output\lvgl_demo.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdarg.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/hal/lv_hal.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/hal/lv_hal_disp.h
 ..\..\output\lvgl_demo.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/hal/lv_hal.h

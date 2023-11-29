@@ -56,14 +56,15 @@ void spi1_init(void)
 }
 
 /**
- * @brief       SPI5底层驱动，时钟使能，引脚配置
+ * @brief       SPI底层驱动，时钟使能，引脚配置
  *   @note      此函数会被HAL_SPI_Init()调用
  * @param       hspi:SPI句柄
  * @retval      无
  */
 void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
 {
-    GPIO_InitTypeDef GPIO_Initure;
+    GPIO_InitTypeDef gpio_init_struct;
+    
     if (hspi->Instance == SPI1_SPI)
     {
         SPI1_SCK_GPIO_CLK_ENABLE();  /* SPI1_SCK脚时钟使能 */
@@ -71,26 +72,26 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
         SPI1_MOSI_GPIO_CLK_ENABLE(); /* SPI1_MOSI脚时钟使能 */
 
         /* SCK引脚模式设置(复用输出) */
-        GPIO_Initure.Pin = SPI1_SCK_GPIO_PIN;
-        GPIO_Initure.Mode = GPIO_MODE_AF_PP;
-        GPIO_Initure.Pull = GPIO_PULLUP;
-        GPIO_Initure.Speed = GPIO_SPEED_FREQ_HIGH;
-        HAL_GPIO_Init(SPI1_SCK_GPIO_PORT, &GPIO_Initure);
+        gpio_init_struct.Pin = SPI1_SCK_GPIO_PIN;
+        gpio_init_struct.Mode = GPIO_MODE_AF_PP;
+        gpio_init_struct.Pull = GPIO_PULLUP;
+        gpio_init_struct.Speed = GPIO_SPEED_FREQ_HIGH;
+        HAL_GPIO_Init(SPI1_SCK_GPIO_PORT, &gpio_init_struct);
 
         /* MISO引脚模式设置(复用输出) */
-        GPIO_Initure.Pin = SPI1_MISO_GPIO_PIN;
-        HAL_GPIO_Init(SPI1_MISO_GPIO_PORT, &GPIO_Initure);
+        gpio_init_struct.Pin = SPI1_MISO_GPIO_PIN;
+        HAL_GPIO_Init(SPI1_MISO_GPIO_PORT, &gpio_init_struct);
 
         /* MOSI引脚模式设置(复用输出) */
-        GPIO_Initure.Pin = SPI1_MOSI_GPIO_PIN;
-        HAL_GPIO_Init(SPI1_MOSI_GPIO_PORT, &GPIO_Initure);
+        gpio_init_struct.Pin = SPI1_MOSI_GPIO_PIN;
+        HAL_GPIO_Init(SPI1_MOSI_GPIO_PORT, &gpio_init_struct);
     }
 }
 
 /**
  * @brief       SPI1速度设置函数
- *   @note      SPI1时钟选择来自APB1, 即PCLK1, 为36Mhz
- *              SPI速度 = PCLK1 / 2^(speed + 1)
+ *   @note      SPI1时钟选择来自APB2, 即PCLK2, 为72Mhz
+ *              SPI速度 = PCLK2 / 2^(speed + 1)
  * @param       speed   : SPI1时钟分频系数
                         取值为SPI_BAUDRATEPRESCALER_2~SPI_BAUDRATEPRESCALER_2 256
  * @retval      无

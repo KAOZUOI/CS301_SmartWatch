@@ -1,9 +1,9 @@
 ..\..\output\queue.o: ..\..\Middlewares\FreeRTOS\queue.c
-..\..\output\queue.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdlib.h
-..\..\output\queue.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\queue.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdlib.h
+..\..\output\queue.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\queue.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
-..\..\output\queue.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\queue.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\queue.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\queue.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\queue.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\queue.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\queue.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -63,7 +63,7 @@
 ..\..\output\queue.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\queue.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\queue.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\queue.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\queue.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\queue.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\queue.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\queue.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

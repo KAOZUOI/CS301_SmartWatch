@@ -31,17 +31,17 @@
 /******************************************************************************************/
 /* 红外输入引脚及定时器 定义 */
 
-#define REMOTE_IN_GPIO_PORT                     GPIOB
-#define REMOTE_IN_GPIO_PIN                      GPIO_PIN_9
-#define REMOTE_IN_GPIO_CLK_ENABLE()             do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0) /* PA口时钟使能 */
+#define REMOTE_IN_GPIO_PORT                     GPIOA
+#define REMOTE_IN_GPIO_PIN                      GPIO_PIN_1
+#define REMOTE_IN_GPIO_CLK_ENABLE()             do{ __HAL_RCC_GPIOA_CLK_ENABLE(); }while(0) /* PA口时钟使能 */
 
 
-#define REMOTE_IN_TIMX                          TIM4                       
-#define REMOTE_IN_TIMX_IRQn                     TIM4_IRQn
-#define REMOTE_IN_TIMX_IRQHandler               TIM4_IRQHandler
-#define REMOTE_IN_TIMX_CHY                      TIM_CHANNEL_4                               /* 通道Y,  1<= Y <=2*/ 
-#define REMOTE_IN_TIMX_CCRY                     REMOTE_IN_TIMX->CCR4
-#define REMOTE_IN_TIMX_CHY_CLK_ENABLE()         do{ __HAL_RCC_TIM4_CLK_ENABLE(); }while(0)  /* TIMX 时钟使能 */
+#define REMOTE_IN_TIMX                          TIM5                       
+#define REMOTE_IN_TIMX_IRQn                     TIM5_IRQn
+#define REMOTE_IN_TIMX_IRQHandler               TIM5_IRQHandler
+#define REMOTE_IN_TIMX_CHY                      TIM_CHANNEL_2                               /* 通道Y,  1<= Y <=2*/ 
+#define REMOTE_IN_TIMX_CCRY                     REMOTE_IN_TIMX->CCR2
+#define REMOTE_IN_TIMX_CHY_CLK_ENABLE()         do{ __HAL_RCC_TIM5_CLK_ENABLE(); }while(0)  /* TIMX 时钟使能 */
 
 /******************************************************************************************/
 

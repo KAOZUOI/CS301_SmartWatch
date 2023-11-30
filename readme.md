@@ -10,7 +10,10 @@
  lvgl_calc transplant from https://github.com/100askTeam/lv_lib_100ask.git  
  Completed: '^' operator and '(' ')' operator  
  Completed: Binary mode  
- TODO: Equation solving part debuging
+ Completed: Equation solving part  
+ TODO: factorial operater  
+ TODO: long equation display  
+ TODO: error handling  
 ### Photo Album
 ### Additional Features
 ### Report

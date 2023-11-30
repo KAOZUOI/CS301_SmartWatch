@@ -22,6 +22,7 @@ typedef enum {
     TOKENIZER_POWER,        // ^
     TOKENIZER_UNKNOWN,     // x
     TOKENIZER_EQUAL,        // =
+    TOKENIZER_FACTORIAL,    // !
 } lv_100ask_calc_token_t;
 
 /* Error code */

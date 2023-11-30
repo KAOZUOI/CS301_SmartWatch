@@ -27,6 +27,22 @@ static lv_100ask_calc_token_t lv_100ask_calc_siglechar_binary(char *curr_char);
 static int lv_100ask_calc_term_binary(lv_obj_t *obj);
 static int lv_100ask_calc_expr_binary(lv_obj_t *obj);
 
+float fastSqrt(float x) {
+    float xhalf = 0.5f*x;
+    int i = *(int*)&x; // get bits for floating VALUE 
+    i = 0x5f375a86- (i>>1); // gives initial guess y0
+    x = *(float*)&i; // convert bits BACK to float
+    x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
+    x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
+    x = x*(1.5f-xhalf*x*x); // Newton step, repeating increases accuracy
+
+    return 1/x;
+}
+
+float abso(float a) {
+    return a > 0 ? a : -a;
+}
+
 void parse_equation(const char* input, equation_coeffs_t* coeffs) {
     coeffs->a = 0;
     coeffs->b = 0;
@@ -35,58 +51,62 @@ void parse_equation(const char* input, equation_coeffs_t* coeffs) {
 
     float temp_coeff = 0;
     int temp_degree = 0;
+    int sign = 1; // process the right part of =
     char* p = (char*)input;
 
     while (*p) {
-        if (sscanf(p, "%f", &temp_coeff) == 1) {
-            // jump to the next non-digit character
-            while (*p != ' ' && *p != '\0' && *p != 'x') p++;
+        if (*p == '=') {
+            sign = -1;
+            p++;
+            continue;
+        }
 
-            // check if there is a x suffix
+        if (sscanf(p, "%f", &temp_coeff) == 1) {
+            temp_coeff *= sign;
+            while (*p != ' ' && *p != '\0' && *p != 'x' && *p != '=') p++;
+
             if (*p == 'x') {
                 p++;
                 if (*p == '^') {
                     p++;
                     if (sscanf(p, "%d", &temp_degree) == 1) {
-                        // parse the degree
                         if (temp_degree == 2) coeffs->a = temp_coeff;
-                        while (isdigit(*p)) p++;
+                        while (isdigit(*p) || *p == '.') p++;
                     }
                 } else {
-                    coeffs->b = temp_coeff; // coefficient of x
-                    if (coeffs->degree == 0) coeffs->degree = 1;
+                    coeffs->b = temp_coeff;
+                    if (coeffs->degree < 2) coeffs->degree = 1;
                 }
             } else {
-                coeffs->c = temp_coeff; // constant
+                coeffs->c += temp_coeff;
+            }
+        } else if (*p == 'x') {
+            p++;
+            temp_coeff = sign;
+            if (*p == '^') {
+                p++;
+                if (sscanf(p, "%d", &temp_degree) == 1 && temp_degree == 2) {
+                    coeffs->a = temp_coeff;
+                    coeffs->degree = 2;
+                    while (isdigit(*p) || *p == '.') p++;
+                }
+            } else {
+                coeffs->b = temp_coeff;
+                if (coeffs->degree < 2) coeffs->degree = 1;
             }
         } else {
-            // check if coefficient is omitted
-            if (*p == 'x') {
-                p++;
-                if (*p == '^') {
-                    p++;
-                    if (sscanf(p, "%d", &temp_degree) == 1 && temp_degree == 2) {
-                        coeffs->a = 1; // omit coefficient, default to 1
-                        coeffs->degree = 2;
-                        while (isdigit(*p)) p++;
-                    }
-                } else {
-                    coeffs->b = 1; // omit coefficient, default to 1
-                    if (coeffs->degree == 0) coeffs->degree = 1;
-                }
-            } else {
-                p++;
-            }
+            p++;
         }
     }
 }
 
+
 void solve_linear_equation(const equation_coeffs_t* coeffs, char* output) {
-    if (coeffs->a == 0) {
+    if (abso(coeffs->b - 0) < 0.00001) {
         sprintf(output, "error in linear equation");
         return;
     }
-    float x = -coeffs->b / coeffs->a;
+    float x = -coeffs->c / coeffs->b;
     sprintf(output, "x = %f", x);
 }
 
@@ -99,8 +119,8 @@ void solve_quadratic_equation(const equation_coeffs_t* coeffs, char* output) {
         float x = -b / (2 * a);
         sprintf(output, "x = %f", x);
     } else {
-        float x1 = (-b + sqrt(discriminant)) / (2 * a);
-        float x2 = (-b - sqrt(discriminant)) / (2 * a);
+        float x1 = (-b + fastSqrt(discriminant)) / (2 * a);
+        float x2 = (-b - fastSqrt(discriminant)) / (2 * a);
         sprintf(output, "x = %f | x = %f", x1, x2);
     }
 }
@@ -122,6 +142,7 @@ void int_to_binary_string(int value, char *buffer, int buffer_size) {
         memmove(buffer, &buffer[index + 1], buffer_size - index - 1);
     }
 }
+
 
 static int binary_add(int a, int b) {
     int carry;
@@ -170,16 +191,16 @@ const lv_obj_class_t lv_100ask_calc_class = {
 };
 // Key map
 static const char * equation_btnm_map[] = { "D", "C", "S", "+", "\n",
-                                            "4", "5", "6", "-", "\n",
+                                            "0", "5", "6", "-", "\n",
                                             "1", "2", "3", "*", "\n",
-                                            "0", "x", "=", "/", "" };
+                                            "^", "x", "=", "/", "" };
 
 static const char * binary_btnm_map[] = { "0", "1", "+", "-", "\n",
                                           "=", "*", "D", "C", "" };
 
-static const char * btnm_map[] = {  "(", ")", "C", "<-", "\n",
+static const char * btnm_map[] = {  "(", ")", "C", "!", "\n",
 									"X", "B", "^", "/",  "\n",
-									"4", "5", "6", "*",  "\n",
+									"<", "5", ">", "*",  "\n",
 									"1", "2", "3", "-",  "\n",
 									"0", ".", "=", "+",  ""};
 
@@ -293,6 +314,7 @@ static void lv_100ask_calc_destructor(const lv_obj_class_t * class_p, lv_obj_t *
 
 }
 
+
 static void calc_btnm_changed_event_cb(lv_event_t *e) {
     lv_obj_t * obj = lv_event_get_target(e);
     lv_event_code_t code = lv_event_get_code(e);
@@ -370,6 +392,7 @@ static void calc_btnm_changed_event_cb(lv_event_t *e) {
         }
         // change to Binary mode
         else if (strcmp(txt, "B") == 0) {
+            HAL_Delay(20);
             lv_btnmatrix_set_map(calc->btnm, binary_btnm_map);
             current_mode = MODE_BINARY;
         }
@@ -380,6 +403,7 @@ static void calc_btnm_changed_event_cb(lv_event_t *e) {
         }
         // change to Equation mode
         else if (strcmp(txt, "X") == 0) {
+            
             lv_btnmatrix_set_map(calc->btnm, equation_btnm_map);
             current_mode = MODE_EQUATION;
         }
@@ -387,17 +411,24 @@ static void calc_btnm_changed_event_cb(lv_event_t *e) {
         else if (strcmp(txt, "S") == 0) {
             char equation_output[128];
             equation_coeffs_t coeffs;
-            parse_equation(calc->calc_exp, &coeffs); // 假设 calc_exp 包含输入的方程式
-
+            parse_equation(calc->calc_exp, &coeffs); // calc->calc_exp is the equation string
             if (coeffs.degree == 1) {
                 solve_linear_equation(&coeffs, equation_output);
             } else if (coeffs.degree == 2) {
                 solve_quadratic_equation(&coeffs, equation_output);
             } else {
-                strcpy(equation_output, "error");
+                sprintf(equation_output, "error in equation: degree = %d", coeffs.degree);
+                // strcpy(equation_output, "error");
             }
-
             lv_textarea_set_text(calc->ta_input, equation_output);
+        }
+        // cursor left
+        else if (strcmp(txt, "<") == 0) {
+            lv_textarea_set_cursor_pos(calc->ta_input, lv_textarea_get_cursor_pos(calc->ta_input) - 1);
+        }
+        // cursor right
+        else if (strcmp(txt, ">") == 0) {
+            lv_textarea_set_cursor_pos(calc->ta_input, lv_textarea_get_cursor_pos(calc->ta_input) + 1);
         }
         // Add char
         else {

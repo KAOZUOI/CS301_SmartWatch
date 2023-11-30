@@ -70,7 +70,15 @@ void parse_equation(const char* input, equation_coeffs_t* coeffs) {
                 if (*p == '^') {
                     p++;
                     if (sscanf(p, "%d", &temp_degree) == 1) {
-                        if (temp_degree == 2) coeffs->a = temp_coeff;
+                        if (temp_degree == 2) {
+                            coeffs->a = temp_coeff;
+                            coeffs->degree = 2;
+                        } else if (temp_degree == 1) {
+                            coeffs->b = temp_coeff;
+                            if (coeffs->degree < 2) coeffs->degree = 1;
+                        } else {
+                            coeffs->degree = 3;
+                        }
                         while (isdigit(*p) || *p == '.') p++;
                     }
                 } else {
@@ -301,7 +309,7 @@ static void lv_100ask_calc_constructor(const lv_obj_class_t * class_p, lv_obj_t 
     lv_obj_set_style_radius(calc->btnm, 0, 0);
     lv_obj_set_style_border_width(calc->btnm, 0, 0);
 
-    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(75));
+    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(73));
     lv_btnmatrix_set_map(calc->btnm, btnm_map);
     lv_obj_add_event_cb(calc->btnm, calc_btnm_changed_event_cb, LV_EVENT_VALUE_CHANGED, obj);
 
@@ -313,6 +321,26 @@ static void lv_100ask_calc_destructor(const lv_obj_class_t * class_p, lv_obj_t *
     LV_UNUSED(class_p);
 
 }
+
+void update_textarea_view(lv_obj_t * textarea) {
+    const char * txt = lv_textarea_get_text(textarea);
+    int cursor_pos = lv_textarea_get_cursor_pos(textarea);
+
+    // 获取文本的度量
+    lv_point_t size;
+    lv_txt_get_size(&size, txt, lv_obj_get_style_text_font(textarea, LV_PART_MAIN), 0, 0, cursor_pos, LV_TEXT_FLAG_NONE);
+
+    // 如果光标位置超出当前视图，滚动到该位置
+    lv_coord_t cur_scroll_x = lv_obj_get_scroll_x(textarea);
+    lv_coord_t ta_width = lv_obj_get_width(textarea);
+
+    if(size.x > cur_scroll_x + ta_width) {
+        lv_obj_scroll_to_x(textarea, size.x - ta_width, LV_ANIM_ON);
+    } else if(size.x < cur_scroll_x) {
+        lv_obj_scroll_to_x(textarea, size.x, LV_ANIM_ON);
+    }
+}
+
 
 
 static void calc_btnm_changed_event_cb(lv_event_t *e) {
@@ -425,10 +453,12 @@ static void calc_btnm_changed_event_cb(lv_event_t *e) {
         // cursor left
         else if (strcmp(txt, "<") == 0) {
             lv_textarea_set_cursor_pos(calc->ta_input, lv_textarea_get_cursor_pos(calc->ta_input) - 1);
+            update_textarea_view(calc->ta_input);
         }
         // cursor right
         else if (strcmp(txt, ">") == 0) {
             lv_textarea_set_cursor_pos(calc->ta_input, lv_textarea_get_cursor_pos(calc->ta_input) + 1);
+            update_textarea_view(calc->ta_input);
         }
         // Add char
         else {

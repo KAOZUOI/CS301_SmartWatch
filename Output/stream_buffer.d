@@ -1,8 +1,8 @@
 ..\..\output\stream_buffer.o: ..\..\Middlewares\FreeRTOS\stream_buffer.c
-..\..\output\stream_buffer.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
-..\..\output\stream_buffer.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\stream_buffer.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\stream_buffer.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\stream_buffer.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
-..\..\output\stream_buffer.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\stream_buffer.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\stream_buffer.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\stream_buffer.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\stream_buffer.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -62,7 +62,7 @@
 ..\..\output\stream_buffer.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\stream_buffer.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\stream_buffer.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\stream_buffer.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\stream_buffer.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\stream_buffer.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\stream_buffer.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\stream_buffer.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

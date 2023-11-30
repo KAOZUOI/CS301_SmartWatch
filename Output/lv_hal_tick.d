@@ -1,11 +1,11 @@
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\hal\lv_hal_tick.c
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\hal\lv_hal_tick.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\hal\../lv_conf_internal.h
-..\..\output\lv_hal_tick.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\lv_hal_tick.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\hal\../lv_conf_kconfig.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
-..\..\output\lv_hal_tick.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdbool.h
-..\..\output\lv_hal_tick.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\lv_hal_tick.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdbool.h
+..\..\output\lv_hal_tick.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
 ..\..\output\lv_hal_tick.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\lv_hal_tick.o: ..\..\Drivers\./SYSTEM/sys/sys.h
@@ -66,7 +66,7 @@
 ..\..\output\lv_hal_tick.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\lv_hal_tick.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\lv_hal_tick.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\lv_hal_tick.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\lv_hal_tick.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\lv_hal_tick.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

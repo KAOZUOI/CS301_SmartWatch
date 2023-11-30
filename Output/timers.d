@@ -1,8 +1,8 @@
 ..\..\output\timers.o: ..\..\Middlewares\FreeRTOS\timers.c
-..\..\output\timers.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdlib.h
+..\..\output\timers.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdlib.h
 ..\..\output\timers.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
-..\..\output\timers.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\timers.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\timers.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\timers.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\timers.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\timers.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\timers.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -62,7 +62,7 @@
 ..\..\output\timers.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\timers.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\timers.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\timers.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\timers.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\timers.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\timers.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\timers.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

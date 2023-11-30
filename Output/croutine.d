@@ -1,7 +1,7 @@
 ..\..\output\croutine.o: ..\..\Middlewares\FreeRTOS\croutine.c
 ..\..\output\croutine.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
-..\..\output\croutine.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\croutine.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\croutine.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\croutine.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\croutine.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\croutine.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\croutine.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -61,7 +61,7 @@
 ..\..\output\croutine.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\croutine.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\croutine.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\croutine.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\croutine.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\croutine.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\croutine.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\croutine.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

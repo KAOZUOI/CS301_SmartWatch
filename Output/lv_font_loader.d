@@ -1,6 +1,6 @@
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\lv_font_loader.c
-..\..\output\lv_font_loader.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
-..\..\output\lv_font_loader.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdbool.h
+..\..\output\lv_font_loader.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\lv_font_loader.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdbool.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../lvgl.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../lvgl.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_log.h
@@ -12,13 +12,13 @@
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/../hal/lv_hal_tick.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_math.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_mem.h
-..\..\output\lv_font_loader.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\lv_font_loader.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\lv_font_loader.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\lv_font_loader.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_async.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_anim_timeline.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_anim.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/misc/lv_printf.h
-..\..\output\lv_font_loader.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdarg.h
+..\..\output\lv_font_loader.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdarg.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/hal/lv_hal.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/hal/lv_hal_disp.h
 ..\..\output\lv_font_loader.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../../src/hal/lv_hal.h

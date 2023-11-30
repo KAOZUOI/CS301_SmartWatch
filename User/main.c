@@ -406,7 +406,7 @@ int main(void)
 		
     
 		
-    // lvgl_demo();                        /* 运行FreeRTOS例程 */
+     lvgl_demo();                        /* 运行FreeRTOS例程 */
 		// sd_main();
-		remote_main();
+		// remote_main();
 }

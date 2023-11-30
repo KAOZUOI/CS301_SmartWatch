@@ -4,7 +4,7 @@
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Include\core_cm3.h
-..\..\output\remote.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\remote.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Include\cmsis_version.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Include\cmsis_compiler.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -15,7 +15,7 @@
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\remote.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\..\output\remote.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\remote.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h
@@ -61,4 +61,4 @@
 ..\..\output\remote.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\remote.o: ..\..\Drivers\./SYSTEM/delay/delay.h
 ..\..\output\remote.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\remote.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\remote.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h

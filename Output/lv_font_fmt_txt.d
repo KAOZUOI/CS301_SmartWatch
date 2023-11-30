@@ -1,11 +1,11 @@
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\lv_font_fmt_txt.c
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\lv_font.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../lv_conf_internal.h
-..\..\output\lv_font_fmt_txt.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\lv_font_fmt_txt.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../lv_conf_kconfig.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
-..\..\output\lv_font_fmt_txt.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\lv_font_fmt_txt.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdbool.h
+..\..\output\lv_font_fmt_txt.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\lv_font_fmt_txt.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdbool.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\lv_symbol_def.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_area.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\lv_font_fmt_txt.h
@@ -13,7 +13,7 @@
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_log.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_types.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_mem.h
-..\..\output\lv_font_fmt_txt.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\lv_font_fmt_txt.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_gc.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_ll.h
 ..\..\output\lv_font_fmt_txt.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\font\../misc/lv_timer.h

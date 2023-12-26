@@ -3,13 +3,13 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.38.0.0
+IDE-Version: ¦ÌVision V5.37.0.0
 Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Yang kzuoi, Sustech, LIC=WHYH9-46UU6-63BMB-2W303-DJAC2-486LG
+License Information: 45656 346346, 346346, LIC=X96CK-ZXI5R-PCUJ8-3MEM5-X0RQ8-2INFX
  
 Tool Versions:
 Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
-Toolchain Path:  D:\Keil\ARM\ARMV5\Bin
+Toolchain Path:  C:\Keil_v5\ARM\ARMV5\Bin
 C Compiler:      Armcc.exe V5.06 update 7 (build 960)
 Assembler:       Armasm.exe V5.06 update 7 (build 960)
 Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
@@ -21,34 +21,125 @@ Target DLL:      CMSIS_AGDI.dll V1.33.12.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-E:\ESMP\lv_calc_test\Projects\MDK-ARM\atk_f103.uvprojx
-Project File Date:  11/30/2023
+C:\Users\lerrorgk\Desktop\CS301_SmartWatch\Projects\MDK-ARM\atk_f103.uvprojx
+Project File Date:  12/19/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil\ARM\ARMV5\Bin'
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMV5\Bin'
 Build target 'LVGL'
-compiling lv_port_disp_template.c...
-compiling lv_mainstart.c...
-..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c(41): warning:  #177-D: function "lv_btn_mode"  was declared but never referenced
-  static void lv_btn_mode(void)
-..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c: 1 warning, 0 errors
+compiling main.c...
+..\..\User\main.c(202): warning:  #550-D: variable "str"  was set but never used
+  						char *str = 0;
+..\..\User\main.c(91): warning:  #177-D: variable "pause"  was declared but never referenced
+      uint8_t pause = 0;          /* ???????? */
+..\..\User\main.c(92): warning:  #177-D: variable "t"  was declared but never referenced
+      uint8_t t;
+..\..\User\main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=200160 RO-data=31500 RW-data=1312 ZI-data=36456  
-FromELF: creating hex file...
-"..\..\Output\atk_f103.axf" - 0 Error(s), 1 Warning(s).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_mem.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching heap_4.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_port_disp_template.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching malloc.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32f103xe.o(STACK).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching tasks.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching startup_stm32f103xe.o(HEAP).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_gc.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching fattester.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usart.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_draw_sw_letter.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usmart_config.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_calc.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching libspace.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching spi.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_theme_default.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching touch.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching remote.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usmart_port.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_keyboard.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching queue.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching tasks.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching piclib.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usmart_config.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_calendar_header_arrow.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching timers.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching fonts.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_port_indev_template.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_theme_default.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching heap_4.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usmart.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_calendar.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_btnmatrix.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_grid.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching malloc.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_gc.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_timer.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching timers.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_flex.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_hal_disp.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lcd.o(.bss).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lvgl_demo.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching stm32f1xx_hal.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching ff.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching tjpgd.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_indev.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_draw_sw_gradient.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_tileview.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_anim.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_txt.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching port.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching remote.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching exfuns.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_port_indev_template.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_event.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_obj.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_obj_pos.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_refr.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_draw_sw_letter.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_calendar_header_dropdown.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_spinner.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_font_montserrat_14.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_mem.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_colorwheel.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching system_stm32f1xx.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usart.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching usart.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lcd.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_group.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_tabview.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_txt.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_txt.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_txt.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_txt.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_textarea.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching delay.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching gt9xxx.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching norflash.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_win.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_style.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching key.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching ft5206.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching spi_sdcard.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching gif.o(.data).
+..\..\Output\atk_f103.axf: Error: L6406E: No space in execution regions with .ANY selector matching lv_obj_style.o(.data).
+..\..\Output\atk_f103.axf: Error: L6407E: Sections of aggregate size 0x9770 bytes could not fit into .ANY selector(s).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 86 error messages.
+"..\..\Output\atk_f103.axf" - 86 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: Keil
-                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
-                Keil.STM32F1xx_DFP.2.4.1
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  D:/Keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+  C:/Users/lerrorgk/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:07
+Target not created.
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

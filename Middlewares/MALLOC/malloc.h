@@ -29,7 +29,6 @@
 
 /* 定义1个内存池 */
 #define SRAMIN      0       /* 内部SRAM, 共64KB */
-
 #define SRAMBANK    1       /* 定义支持的SRAM块数. */
 
 
@@ -39,7 +38,6 @@
 
 /* 单块内存，内存管理所占用的全部空间大小计算公式如下：
  * size = MEM1_MAX_SIZE + (MEM1_MAX_SIZE / MEM1_BLOCK_SIZE) * sizeof(MT_TYPE)
- * 以SRAMEX为例，size = 963 * 1024 + (963 * 1024 / 32) * 2 = 1047744 ≈ 1023KB
 
  * 已知总内存容量(size)，最大内存池的计算公式如下：
  * MEM1_MAX_SIZE = (MEM1_BLOCK_SIZE * size) / (MEM1_BLOCK_SIZE + sizeof(MT_TYPE))
@@ -49,7 +47,7 @@
  
 /* mem1内存参数设定.mem1是F103内部的SRAM. */
 #define MEM1_BLOCK_SIZE         32                              /* 内存块大小为32字节 */
-#define MEM1_MAX_SIZE           2 * 1024                       /* 最大管理内存 40K, F103RC内部SRAM总共48KB */
+#define MEM1_MAX_SIZE           40 * 1024                       /* 最大管理内存 40K, F103RC内部SRAM总共48KB */
 #define MEM1_ALLOC_TABLE_SIZE   MEM1_MAX_SIZE/MEM1_BLOCK_SIZE   /* 内存表大小 */
 
 
@@ -74,14 +72,14 @@ struct _m_mallco_dev
 extern struct _m_mallco_dev mallco_dev; /* 在mallco.c里面定义 */
 
 
-/* 用户调用函数 */
-void my_mem_init(uint8_t memx);                     /* 内存管理初始化函数(外/内部调用) */
-uint16_t my_mem_perused(uint8_t memx) ;             /* 获得内存使用率(外/内部调用) */
-void my_mem_set(void *s, uint8_t c, uint32_t count);/* 内存设置函数 */
-void my_mem_copy(void *des, void *src, uint32_t n); /* 内存拷贝函数 */
+/* 函数声明 */
+void my_mem_init(uint8_t memx);                             /* 内存管理初始化函数(外/内部调用) */
+uint16_t my_mem_perused(uint8_t memx) ;                     /* 获得内存使用率(外/内部调用) */
+void my_mem_set(void *s, uint8_t c, uint32_t count);        /* 内存设置函数 */
+void my_mem_copy(void *des, void *src, uint32_t n);         /* 内存拷贝函数 */
 
-void myfree(uint8_t memx, void *ptr);               /* 内存释放(外部调用) */
-void *mymalloc(uint8_t memx, uint32_t size);        /* 内存分配(外部调用) */
+void myfree(uint8_t memx, void *ptr);                       /* 内存释放(外部调用) */
+void *mymalloc(uint8_t memx, uint32_t size);                /* 内存分配(外部调用) */
 void *myrealloc(uint8_t memx, void *ptr, uint32_t size);    /* 重新分配内存(外部调用) */
 
 #endif

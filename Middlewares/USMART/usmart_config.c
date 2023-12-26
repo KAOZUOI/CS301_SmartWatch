@@ -1,6 +1,7 @@
 #include "./USMART/usmart.h"
 #include "./USMART/usmart_str.h"
 
+
 /******************************************************************************************/
 /* 用户配置区
  * 这下面要包含所用到的函数所申明的头文件(用户自己添加)
@@ -8,7 +9,7 @@
  
 #include "./SYSTEM/sys/sys.h"
 #include "./SYSTEM/delay/delay.h"
-#include "./MALLOC/malloc.h"
+#include "./PICTURE/piclib.h"
 
 
 /* 函数名列表初始化(用户自己添加)
@@ -23,8 +24,8 @@ struct _m_usmart_nametab usmart_nametab[] =
     (void *)delay_ms, "void delay_ms(uint16_t nms)",
     (void *)delay_us, "void delay_us(uint32_t nus)",
 
-    (void *)mymalloc, "void *mymalloc(uint8_t memx, uint32_t size)",
-    (void *)myfree, "void myfree(uint8_t memx, void *ptr)",
+    (void *)piclib_ai_load_picfile, "uint8_t piclib_ai_load_picfile(const uint8_t *filename, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t fast)",
+    (void *)bmp_encode, "uint8_t bmp_encode(uint8_t *filename,uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint8_t mode);",
 
 };
 

@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>STM32F103RC</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F1xx_DFP.2.4.1</PackID>
-          <PackURL>https://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F1xx_DFP.2.3.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0xC000) IROM(0x08000000,0x40000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -555,6 +555,11 @@
               <FilePath>..\..\Drivers\BSP\TOUCH\touch.c</FilePath>
             </File>
             <File>
+              <FileName>remote.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\REMOTE\remote.c</FilePath>
+            </File>
+            <File>
               <FileName>spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Drivers\BSP\SPI\spi.c</FilePath>
@@ -565,9 +570,9 @@
               <FilePath>..\..\Drivers\BSP\SDMMC\spi_sdcard.c</FilePath>
             </File>
             <File>
-              <FileName>remote.c</FileName>
+              <FileName>norflash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Drivers\BSP\REMOTE\remote.c</FilePath>
+              <FilePath>..\..\Drivers\BSP\NORFLASH\norflash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -578,6 +583,81 @@
               <FileName>malloc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Middlewares\MALLOC\malloc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/FATFS</GroupName>
+          <Files>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\source\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\source\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ffsystem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\source\ffsystem.c</FilePath>
+            </File>
+            <File>
+              <FileName>exfuns.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\exfuns\exfuns.c</FilePath>
+            </File>
+            <File>
+              <FileName>fattester.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\exfuns\fattester.c</FilePath>
+            </File>
+            <File>
+              <FileName>myffunicode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\FATFS\exfuns\myffunicode.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/TEXT</GroupName>
+          <Files>
+            <File>
+              <FileName>fonts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\TEXT\fonts.c</FilePath>
+            </File>
+            <File>
+              <FileName>text.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\TEXT\text.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/PICTURE</GroupName>
+          <Files>
+            <File>
+              <FileName>bmp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\PICTURE\bmp.c</FilePath>
+            </File>
+            <File>
+              <FileName>gif.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\PICTURE\gif.c</FilePath>
+            </File>
+            <File>
+              <FileName>piclib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\PICTURE\piclib.c</FilePath>
+            </File>
+            <File>
+              <FileName>tjpgd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\PICTURE\tjpgd.c</FilePath>
             </File>
           </Files>
         </Group>

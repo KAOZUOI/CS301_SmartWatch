@@ -1,8 +1,8 @@
 ..\..\output\list.o: ..\..\Middlewares\FreeRTOS\list.c
-..\..\output\list.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdlib.h
+..\..\output\list.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdlib.h
 ..\..\output\list.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
-..\..\output\list.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\list.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\list.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\list.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\list.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\list.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\list.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
@@ -62,7 +62,7 @@
 ..\..\output\list.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\list.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\list.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\list.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\list.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\list.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\list.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\list.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

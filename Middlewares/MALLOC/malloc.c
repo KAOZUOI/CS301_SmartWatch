@@ -26,30 +26,24 @@
 
 
 /* 内存池(64字节对齐) */
-static __ALIGNED(64) uint8_t mem1base[MEM1_MAX_SIZE];                                     /* 内部SRAM内存池 */
+static __ALIGNED(64) uint8_t mem1base[MEM1_MAX_SIZE];   /* 内部SRAM内存池 */
 
 /* 内存管理表 */
-static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];                                       /* 内部SRAM内存池MAP */
-
+static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];      /* 内部SRAM内存池MAP */
 
 /* 内存管理参数 */
-const uint32_t memtblsize[SRAMBANK] = {MEM1_ALLOC_TABLE_SIZE, 
-                                       };       /* 内存表大小 */
-
-const uint32_t memblksize[SRAMBANK] = {MEM1_BLOCK_SIZE, 
-                                      };        /* 内存分块大小 */
-
-const uint32_t memsize[SRAMBANK] = {MEM1_MAX_SIZE,
-                                   };           /* 内存总大小 */
+const uint32_t memtblsize[SRAMBANK] = {MEM1_ALLOC_TABLE_SIZE};  /* 内存表大小 */
+const uint32_t memblksize[SRAMBANK] = {MEM1_BLOCK_SIZE};        /* 内存分块大小 */
+const uint32_t memsize[SRAMBANK] = {MEM1_MAX_SIZE,};            /* 内存总大小 */
 
 /* 内存管理控制器 */
 struct _m_mallco_dev mallco_dev =
 {
-    my_mem_init,                    /* 内存初始化 */
-    my_mem_perused,                 /* 内存使用率 */
-    mem1base,                       /* 内存池 */
-    mem1mapbase,                    /* 内存管理状态表 */
-    0,                              /* 内存管理未就绪 */
+    my_mem_init,    /* 内存初始化 */
+    my_mem_perused, /* 内存使用率 */
+    mem1base,       /* 内存池 */
+    mem1mapbase,    /* 内存管理状态表 */
+    0,              /* 内存管理未就绪 */
 };
 
 /**
@@ -64,7 +58,7 @@ void my_mem_copy(void *des, void *src, uint32_t n)
     uint8_t *xdes = des;
     uint8_t *xsrc = src;
 
-    while (n--)*xdes++ = *xsrc++;
+    while (n--) *xdes++ = *xsrc++;
 }
 
 /**
@@ -78,7 +72,7 @@ void my_mem_set(void *s, uint8_t c, uint32_t count)
 {
     uint8_t *xs = s;
 
-    while (count--)*xs++ = c;
+    while (count--) *xs++ = c;
 }
 
 /**
@@ -89,7 +83,7 @@ void my_mem_set(void *s, uint8_t c, uint32_t count)
 void my_mem_init(uint8_t memx)
 {
     uint8_t mttsize = sizeof(MT_TYPE);  /* 获取memmap数组的类型长度(uint16_t /uint32_t)*/
-    my_mem_set(mallco_dev.memmap[memx], 0, memtblsize[memx]*mttsize); /* 内存状态表数据清零 */
+    my_mem_set(mallco_dev.memmap[memx], 0, memtblsize[memx] * mttsize); /* 内存状态表数据清零 */
     mallco_dev.memrdy[memx] = 1;        /* 内存管理初始化OK */
 }
 
@@ -105,7 +99,7 @@ uint16_t my_mem_perused(uint8_t memx)
 
     for (i = 0; i < memtblsize[memx]; i++)
     {
-        if (mallco_dev.memmap[memx][i])used++;
+        if (mallco_dev.memmap[memx][i]) used++;
     }
 
     return (used * 1000) / (memtblsize[memx]);
@@ -122,8 +116,8 @@ uint16_t my_mem_perused(uint8_t memx)
 static uint32_t my_mem_malloc(uint8_t memx, uint32_t size)
 {
     signed long offset = 0;
-    uint32_t nmemb;     /* 需要的内存块数 */
-    uint32_t cmemb = 0; /* 连续空内存块数 */
+    uint32_t nmemb;         /* 需要的内存块数 */
+    uint32_t cmemb = 0;     /* 连续空内存块数 */
     uint32_t i;
 
     if (!mallco_dev.memrdy[memx])
@@ -150,7 +144,7 @@ static uint32_t my_mem_malloc(uint8_t memx, uint32_t size)
         
         if (cmemb == nmemb)     /* 找到了连续nmemb个空内存块 */
         {
-            for (i = 0; i < nmemb; i++) /* 标注内存块非空 */
+            for (i = 0; i < nmemb; i++)         /* 标注内存块非空 */
             {
                 mallco_dev.memmap[memx][offset + i] = nmemb;
             }
@@ -209,7 +203,7 @@ void myfree(uint8_t memx, void *ptr)
 {
     uint32_t offset;
 
-    if (ptr == NULL)return;     /* 地址为0. */
+    if (ptr == NULL) return;    /* 地址为0. */
 
     offset = (uint32_t)ptr - (uint32_t)mallco_dev.membase[memx];
     my_mem_free(memx, offset);  /* 释放内存 */
@@ -252,10 +246,10 @@ void *myrealloc(uint8_t memx, void *ptr, uint32_t size)
     {
         return NULL;            /* 返回空(0) */
     }
-    else    /* 申请没问题, 返回首地址 */
+    else                        /* 申请没问题, 返回首地址 */
     {
         my_mem_copy((void *)((uint32_t)mallco_dev.membase[memx] + offset), ptr, size); /* 拷贝旧内存内容到新内存 */
-        myfree(memx, ptr);  /* 释放旧内存 */
+        myfree(memx, ptr);      /* 释放旧内存 */
         return (void *)((uint32_t)mallco_dev.membase[memx] + offset);   /* 返回新内存首地址 */
     }
 }

@@ -274,14 +274,11 @@ void rtc_get_time(void)
     seccount = RTC->CNTH;       /* 得到计数器中的值(秒钟数) */
     seccount <<= 16;
     seccount += RTC->CNTL;
-
     temp = seccount / 86400;    /* 得到天数(秒钟数对应的) */
-
     if (daycnt != temp)         /* 超过一天了 */
     {
         daycnt = temp;
         temp1 = 1970;           /* 从1970年开始 */
-
         while (temp >= 365)
         {
             if (rtc_is_leap_year(temp1)) /* 是闰年 */
@@ -299,13 +296,11 @@ void rtc_get_time(void)
             {
                 temp -= 365;    /* 平年 */
             }
-
             temp1++;
         }
 
         calendar.year = temp1;  /* 得到年份 */
         temp1 = 0;
-
         while (temp >= 28)      /* 超过了一个月 */
         {
             if (rtc_is_leap_year(calendar.year) && temp1 == 1) /* 当年是不是闰年/2月份 */

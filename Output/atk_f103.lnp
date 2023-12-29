@@ -20,6 +20,8 @@
 "..\..\output\stm32f1xx_hal_tim.o"
 "..\..\output\stm32f1xx_hal_tim_ex.o"
 "..\..\output\stm32f1xx_hal_spi.o"
+"..\..\output\stm32f1xx_hal_rtc.o"
+"..\..\output\stm32f1xx_hal_rtc_ex.o"
 "..\..\output\led.o"
 "..\..\output\lcd.o"
 "..\..\output\key.o"

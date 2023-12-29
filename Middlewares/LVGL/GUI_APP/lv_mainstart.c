@@ -50,11 +50,10 @@ void lv_100ask_calc(void)
 }
 
 static void update_time(lv_timer_t *timer) {
-    char tbuf[20];
+    char tbuf[24];
     // 假设 rtc_get_time() 函数更新了 calendar 结构体
     rtc_get_time();
     sprintf(tbuf, "Time:%02d:%02d:%02d", calendar.hour, calendar.min, calendar.sec);
-
     // 更新标签的文本
     lv_label_set_text((lv_obj_t *)timer->user_data, tbuf);
 }
@@ -66,8 +65,9 @@ static void component_select_event_handler(lv_event_t *e) {
 
     if (strcmp(btn_label, "Album") == 0) {
         // 打开相册组件
-    } else if (strcmp(btn_label, "Calculator") == 0) {
+    } else if (strcmp(btn_label, "Calc") == 0) {
         // 打开计算器组件
+        lv_obj_clean(lv_scr_act());
         lv_100ask_calc();
     }
     // 添加其他组件的条件分支
@@ -76,14 +76,26 @@ static void component_select_event_handler(lv_event_t *e) {
 
 static void init_main_page() {
     // 创建时间显示标签
-    lv_obj_t *time_label = lv_label_create(lv_scr_act());
-    lv_obj_set_height(time_label, LV_PCT(10));
-    lv_obj_set_width(time_label, LV_PCT(25));
-    lv_obj_align(time_label, LV_ALIGN_TOP_LEFT, 0, 0);
-    lv_obj_set_style_text_font(time_label, &lv_font_montserrat_14, 0);
+    lv_obj_t *time_label_hour = lv_label_create(lv_scr_act());
+    lv_obj_set_height(time_label_hour, LV_PCT(10));
+    lv_obj_set_width(time_label_hour, LV_PCT(50));
+    lv_obj_align(time_label_hour, LV_ALIGN_TOP_LEFT, 0, 0);
+    lv_obj_set_style_text_font(time_label_hour, &lv_font_montserrat_14, 0);
 
     // 创建一个定时任务，每100ms调用一次 update_time 函数
-    lv_timer_t *timer = lv_timer_create(update_time, 100, time_label);
+    lv_timer_t *timer = lv_timer_create(update_time, 100, time_label_hour);
+
+    // 创建日期显示标签
+    char tbuf[24];
+    rtc_get_time();
+    sprintf((char *)tbuf, "Date:%04d-%02d-%02d", calendar.year, calendar.month, calendar.date);
+    lv_obj_t *time_label_date = lv_label_create(lv_scr_act());
+    lv_obj_set_height(time_label_date, LV_PCT(10));
+    lv_obj_set_width(time_label_date, LV_PCT(50));
+    lv_obj_align(time_label_date, LV_ALIGN_TOP_LEFT, 0, 20);
+    lv_obj_set_style_text_font(time_label_date, &lv_font_montserrat_14, 0);
+    lv_label_set_text(time_label_date, tbuf);
+
 
     // 添加用户名显示
     lv_obj_t *username_label = lv_label_create(lv_scr_act());
@@ -106,7 +118,7 @@ static void init_main_page() {
             lv_obj_align(btn, LV_ALIGN_BOTTOM_LEFT, 0, 0);
         } else {
             // 其他按钮，靠上一个按钮的右侧
-            lv_obj_align_to(btn, last_btn, LV_ALIGN_OUT_RIGHT_MID, 0, 0);
+            lv_obj_align(btn, LV_ALIGN_BOTTOM_LEFT, i*80, 0);
         }
 
         lv_obj_add_event_cb(btn, component_select_event_handler, LV_EVENT_CLICKED, NULL);

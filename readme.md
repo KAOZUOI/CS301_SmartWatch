@@ -12,8 +12,9 @@
  Completed: Binary mode  
  Completed: Equation solving part  
  TODO: factorial operater  
- TODO: long equation display  
- TODO: error handling  
+ TODO: long equation display  (replaced by input history)  
+ TODO: error handling  (only invalid equation and divided by 0 can be detected)  
 ### Photo Album
+ Completed  
 ### Additional Features
 ### Report

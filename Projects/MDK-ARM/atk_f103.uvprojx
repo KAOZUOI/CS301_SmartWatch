@@ -569,6 +569,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\Drivers\BSP\REMOTE\remote.c</FilePath>
             </File>
+            <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Drivers\BSP\RTC\rtc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

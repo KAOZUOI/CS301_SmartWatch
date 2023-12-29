@@ -1,7 +1,7 @@
 Dependencies for Project 'atk_f103', Target 'LVGL': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMV5
 F (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Source\Templates\arm\startup_stm32f103xe.s)(0x64054DE0)(--cpu Cortex-M3 -g --apcs=interwork -ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 538" --pd "STM32F10X_HD SETA 1"--list ..\..\output\startup_stm32f103xe.lst --xref -o ..\..\output\startup_stm32f103xe.o --depend ..\..\output\startup_stm32f103xe.d)
-F (..\..\User\main.c)(0x658E7ABE)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
+F (..\..\User\main.c)(0x658E9C37)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\main.o --omf_browse ..\..\output\main.crf --depend ..\..\output\main.d)
 I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x64054DE1)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x64054DE0)
 I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x64054DE0)
@@ -77,6 +77,7 @@ I (..\..\Drivers\./BSP/TOUCH/ft5206.h)(0x647D9A45)
 I (..\..\Drivers\./BSP/SDMMC/spi_sdcard.h)(0x65689DDB)
 I (..\..\Drivers\./BSP/SPI/spi.h)(0x64054DE0)
 I (..\..\Drivers\./BSP/REMOTE/remote.h)(0x65689DDB)
+I (..\..\Drivers\./BSP/RTC/rtc.h)(0x658E9F9E)
 I (..\..\Middlewares\LVGL\GUI\lvgl\lvgl.h)(0x64054DE3)
 I (..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_log.h)(0x64054DE7)
 I (..\..\Middlewares\LVGL\GUI\lvgl\src/misc/../lv_conf_internal.h)(0x64054DE7)
@@ -2229,6 +2230,70 @@ I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h)(0x64054DE0)
 I (..\..\Drivers\./SYSTEM/delay/delay.h)(0x64054DE1)
 I (..\..\Drivers\./SYSTEM/usart/usart.h)(0x64054DE1)
 I (D:\Keil\ARM\ARMV5\include\stdio.h)(0x5E8E3CC2)
+F (..\..\Drivers\BSP\RTC\rtc.c)(0x658E9F97)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\rtc.o --omf_browse ..\..\output\rtc.crf --depend ..\..\output\rtc.d)
+I (..\..\Drivers\./BSP/RTC/rtc.h)(0x658E9F9E)
+I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x64054DE1)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h)(0x64054DE0)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h)(0x64054DE0)
+I (..\..\Drivers\CMSIS\Include\core_cm3.h)(0x64054DE0)
+I (D:\Keil\ARM\ARMV5\include\stdint.h)(0x5E8E3CC2)
+I (..\..\Drivers\CMSIS\Include\cmsis_version.h)(0x64054DE0)
+I (..\..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x64054DE0)
+I (..\..\Drivers\CMSIS\Include\cmsis_armcc.h)(0x64054DE0)
+I (..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\system_stm32f1xx.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x64054DE0)
+I (..\..\User\stm32f1xx_hal_conf.h)(0x64054DE8)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h)(0x64054DE0)
+I (D:\Keil\ARM\ARMV5\include\stddef.h)(0x5E8E3CC2)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_exti.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dma_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_eth.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_can.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cec.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_cortex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_adc_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_crc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dac.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_dac_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_flash_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_sram.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_fsmc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_nor.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_i2c.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_i2s.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_iwdg.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pwr.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rtc_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pccard.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_sd.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_sdmmc.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_nand.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_usart.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_irda.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_smartcard.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_wwdg.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usb.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h)(0x64054DE0)
+I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h)(0x64054DE0)
+I (..\..\Drivers\./BSP/LED/led.h)(0x64054DE0)
+I (..\..\Drivers\./SYSTEM/usart/usart.h)(0x64054DE1)
+I (D:\Keil\ARM\ARMV5\include\stdio.h)(0x5E8E3CC2)
+I (..\..\Drivers\./SYSTEM/delay/delay.h)(0x64054DE1)
 F (..\..\Middlewares\MALLOC\malloc.c)(0x658E7159)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\malloc.o --omf_browse ..\..\output\malloc.crf --depend ..\..\output\malloc.d)
 I (..\..\Middlewares\./MALLOC/malloc.h)(0x658E7159)
 I (..\..\Drivers\./SYSTEM/sys/sys.h)(0x64054DE1)
@@ -13204,7 +13269,7 @@ I (..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3\portmacro.h)(0x64054DE2)
 I (..\..\Middlewares\FreeRTOS\include\mpu_wrappers.h)(0x64054DE2)
 I (..\..\Middlewares\FreeRTOS\include\task.h)(0x64054DE2)
 I (..\..\Middlewares\FreeRTOS\include\list.h)(0x64054DE1)
-F (..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c)(0x658E7DFB)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\lv_mainstart.o --omf_browse ..\..\output\lv_mainstart.crf --depend ..\..\output\lv_mainstart.d)
+F (..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c)(0x658EA022)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\lv_mainstart.o --omf_browse ..\..\output\lv_mainstart.crf --depend ..\..\output\lv_mainstart.d)
 I (..\..\Middlewares\LVGL/GUI_APP/lv_mainstart.h)(0x658E7DC5)
 I (..\..\Middlewares\LVGL\GUI\lvgl\lvgl.h)(0x64054DE3)
 I (..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_log.h)(0x64054DE7)
@@ -13385,9 +13450,11 @@ I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_ll_usb.h)(0x64054DE0)
 I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h)(0x64054DE0)
 I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h)(0x64054DE0)
 I (..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h)(0x64054DE0)
+I (..\..\Drivers\./BSP/RTC/rtc.h)(0x658E9F9E)
 I (..\..\Middlewares\LVGL\GUI_APP\lv_calc.h)(0x658E7DBF)
 I (D:\Keil\ARM\ARMV5\include\stdio.h)(0x5E8E3CC2)
-F (..\..\Middlewares\LVGL\GUI_APP\lv_calc.c)(0x658E8ADA)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\lv_calc.o --omf_browse ..\..\output\lv_calc.crf --depend ..\..\output\lv_calc.d)
+I (D:\Keil\ARM\ARMV5\include\time.h)(0x5E8E3CC2)
+F (..\..\Middlewares\LVGL\GUI_APP\lv_calc.c)(0x658E8BF0)(--c99 -c --cpu Cortex-M3 -g -O2 --apcs=interwork --split_sections -I ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include -I ..\..\Drivers\STM32F1xx_HAL_Driver\Inc -I ..\..\Drivers\CMSIS\Include -I ..\..\Drivers\ -I ..\..\User -I ..\..\Middlewares -I ..\..\Middlewares\LVGL\GUI -I ..\..\Middlewares\LVGL\GUI\lvgl -I ..\..\Middlewares\LVGL\GUI\lvgl\src -I ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting -I ..\..\Middlewares\LVGL\GUI_APP\demos -I ..\..\Middlewares\LVGL\GUI_APP\demos\stress -I ..\..\Middlewares\FreeRTOS\include -I ..\..\Middlewares\FreeRTOS\portable\RVDS\ARM_CM3 -I ..\..\Middlewares\LVGL\GUI_APP\ --diag_suppress=68 --diag_suppress=111 --diag_suppress=188 --diag_suppress=223 --diag_suppress=546  --diag_suppress=1295 --locale=english-ID:\Keil\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="538" -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE-o ..\..\output\lv_calc.o --omf_browse ..\..\output\lv_calc.crf --depend ..\..\output\lv_calc.d)
 I (..\..\Middlewares\LVGL\GUI_APP\lv_calc.h)(0x658E7DBF)
 I (..\..\Middlewares\LVGL\GUI\lvgl\lvgl.h)(0x64054DE3)
 I (..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_log.h)(0x64054DE7)

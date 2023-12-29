@@ -32,6 +32,7 @@
 "..\..\output\spi.o"
 "..\..\output\spi_sdcard.o"
 "..\..\output\remote.o"
+"..\..\output\rtc.o"
 "..\..\output\malloc.o"
 "..\..\output\usmart.o"
 "..\..\output\usmart_config.o"

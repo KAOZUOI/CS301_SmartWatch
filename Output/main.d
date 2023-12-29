@@ -75,6 +75,7 @@
 ..\..\output\main.o: ..\..\Drivers\./BSP/SDMMC/spi_sdcard.h
 ..\..\output\main.o: ..\..\Drivers\./BSP/SPI/spi.h
 ..\..\output\main.o: ..\..\Drivers\./BSP/REMOTE/remote.h
+..\..\output\main.o: ..\..\Drivers\./BSP/RTC/rtc.h
 ..\..\output\main.o: ..\..\Middlewares\LVGL\GUI\lvgl\lvgl.h
 ..\..\output\main.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/lv_log.h
 ..\..\output\main.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/misc/../lv_conf_internal.h

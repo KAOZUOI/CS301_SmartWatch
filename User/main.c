@@ -30,6 +30,7 @@
 #include "./BSP/TOUCH/touch.h"
 #include "./BSP/SDMMC/spi_sdcard.h"
 #include "./BSP/REMOTE/remote.h"
+#include "./BSP/RTC/rtc.h"
 
 /* LVGL */
 #include "lvgl.h"
@@ -400,7 +401,8 @@ int main(void)
     led_init();
     lcd_init();
     key_init();
+    rtc_init();
 
     my_mem_init(SRAMIN);
-     lvgl_demo();
+    lvgl_demo();
 }

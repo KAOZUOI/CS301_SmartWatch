@@ -181,5 +181,7 @@
 ..\..\output\lv_mainstart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_pcd_ex.h
 ..\..\output\lv_mainstart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\lv_mainstart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
+..\..\output\lv_mainstart.o: ..\..\Drivers\./BSP/RTC/rtc.h
 ..\..\output\lv_mainstart.o: ..\..\Middlewares\LVGL\GUI_APP\lv_calc.h
 ..\..\output\lv_mainstart.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\lv_mainstart.o: D:\Keil\ARM\ARMV5\Bin\..\include\time.h

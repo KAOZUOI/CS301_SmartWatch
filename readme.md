@@ -13,7 +13,7 @@ TODO: bug in RTC module(because battery out of power)
  Completed: '^' operator and '(' ')' operator  
  Completed: Binary mode  
  Completed: Equation solving part  
- TODO: factorial operater  
+ TODO: factorial operater  (change to back button for main page initialization)  
  TODO: long equation display  (replaced by input history)  
  TODO: error handling  (only invalid equation and divided by 0 can be detected)  
 ### Photo Album

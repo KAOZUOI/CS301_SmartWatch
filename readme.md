@@ -5,6 +5,8 @@
  Compiler version: ARM Compiler 5.06
 # CS301 Embedded System Final Project
 ### Basic Framework
+Complete  
+TODO: bug in RTC module(because battery out of power)  
 ### Chat Component
 ### Calculator Component 
  lvgl_calc transplant from https://github.com/100askTeam/lv_lib_100ask.git  

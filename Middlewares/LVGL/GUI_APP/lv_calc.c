@@ -297,7 +297,7 @@ static void lv_100ask_calc_constructor(const lv_obj_class_t * class_p, lv_obj_t 
     lv_obj_set_style_radius(calc->ta_input, 0, 0);
     lv_obj_set_style_border_width(calc->ta_input, 0, 0);
     
-    lv_obj_set_size(calc->ta_input, LV_PCT(100), LV_PCT(5));
+    lv_obj_set_size(calc->ta_input, LV_PCT(100), LV_PCT(15));
     lv_textarea_set_one_line(calc->ta_input, true);
     lv_textarea_set_cursor_click_pos(calc->ta_input, false);
     lv_textarea_set_max_length(calc->ta_input, LV_100ASK_CALC_HISTORY_MAX_LINE);
@@ -309,7 +309,7 @@ static void lv_100ask_calc_constructor(const lv_obj_class_t * class_p, lv_obj_t 
     lv_obj_set_style_radius(calc->btnm, 0, 0);
     lv_obj_set_style_border_width(calc->btnm, 0, 0);
 
-    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(73));
+    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(65));
     lv_btnmatrix_set_map(calc->btnm, btnm_map);
     lv_obj_add_event_cb(calc->btnm, calc_btnm_changed_event_cb, LV_EVENT_VALUE_CHANGED, obj);
 
@@ -695,6 +695,12 @@ static int lv_100ask_calc_term(lv_obj_t *obj) {
                 f1 = f1 * f2;
                 break;
             case TOKENIZER_SLASH:
+                if (f2 == 0) {
+                    char tmp_buff[32];
+                    lv_snprintf(tmp_buff, sizeof(tmp_buff), "error: divide by zero");
+                    lv_textarea_add_text(calc->ta_hist, tmp_buff);
+                    return 0;
+                }
                 f1 = f1 / f2;
                 break;
         }

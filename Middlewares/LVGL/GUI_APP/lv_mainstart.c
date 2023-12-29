@@ -1,23 +1,3 @@
-/**
- ****************************************************************************************************
- * @file        lv_mainstart.c
- * @author      正点原子团队(ALIENTEK)
- * @version     V1.0
- * @date        2022-03-23
- * @brief       LVGL lv_btn(按钮) 实验
- * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
- ****************************************************************************************************
- * @attention
- *
- * 实验平台:正点原子 MiniSTM32 V4开发板
- * 在线视频:www.yuanzige.com
- * 技术论坛:www.openedv.com
- * 公司网址:www.alientek.com
- * 购买地址:openedv.taobao.com
- *
- ****************************************************************************************************
- */
- 
 #include "LVGL/GUI_APP/lv_mainstart.h"
 #include "lvgl.h"
 #include "./BSP/LED/led.h"
@@ -26,8 +6,6 @@
 #include <string.h>
 
 
-
-/* 获取当前活动屏幕的宽高 */
 #define scr_act_width()  lv_obj_get_width(lv_scr_act())
 #define scr_act_height() lv_obj_get_height(lv_scr_act())
 
@@ -55,6 +33,7 @@ void lv_100ask_calc(void)
 	lv_obj_t * calc = lv_100ask_calc_create(lv_scr_act());
     lv_obj_set_size(calc, scr_act_width(), scr_act_height());
     lv_obj_center(calc);
+    lv_obj_clear_flag(calc, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);
 
     lv_obj_t * calc_ta_hist = lv_100ask_calc_get_ta_hist(calc);
     lv_obj_set_style_text_font(calc_ta_hist, &lv_font_montserrat_14, 0);
@@ -64,6 +43,7 @@ void lv_100ask_calc(void)
 
     lv_obj_t * calc_ta_btnm = lv_100ask_calc_get_btnm(calc);
     lv_obj_set_style_text_font(calc_ta_btnm, &lv_font_montserrat_14, 0);
+
 }
 /**
  * @brief  LVGL演示

@@ -394,19 +394,13 @@ int main(void)
 
     HAL_Init();                         /* 初始化HAL库 */
     sys_stm32_clock_init(RCC_PLL_MUL9); /* 设置时钟, 72Mhz */
-    delay_init(72);                     /* 延时初始化 */
-    usart_init(115200);                 /* 串口初始化为115200 */
-    usmart_dev.init(72);                /* 初始化USMART */
-    led_init();                         /* 初始化LED */
-    lcd_init();                         /* 初始化LCD */
-    key_init();                         /* 初始化按键 */
-	  remote_init();                      /* 红外接收初始化 */
+    delay_init(72);
+    usart_init(115200);
+    usmart_dev.init(72);
+    led_init();
+    lcd_init();
+    key_init();
 
-    my_mem_init(SRAMIN);                /* 初始化内部SRAM内存池 */
-		
-    
-		
-     lvgl_demo();                        /* 运行FreeRTOS例程 */
-		// sd_main();
-		// remote_main();
+    my_mem_init(SRAMIN);
+     lvgl_demo();
 }

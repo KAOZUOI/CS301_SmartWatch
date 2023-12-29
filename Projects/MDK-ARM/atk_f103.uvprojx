@@ -1414,6 +1414,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\Middlewares\LVGL\GUI_APP\lv_calc.c</FilePath>
             </File>
+            <File>
+              <FileName>lv_2048.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Middlewares\LVGL\GUI_APP\lv_2048.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

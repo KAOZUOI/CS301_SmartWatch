@@ -188,6 +188,7 @@
 "..\..\output\heap_4.o"
 "..\..\output\lv_mainstart.o"
 "..\..\output\lv_calc.o"
+"..\..\output\lv_2048.o"
 "..\..\output\myfont14.o"
 --strict --scatter "..\..\Output\atk_f103.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols

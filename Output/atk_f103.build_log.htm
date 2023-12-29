@@ -27,14 +27,12 @@ Project File Date:  12/29/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil\ARM\ARMV5\Bin'
 Build target 'LVGL'
-compiling rtc.c...
 compiling lv_mainstart.c...
-..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c(21): warning:  #177-D: function "lv_btn_mode"  was declared but never referenced
-  static void lv_btn_mode(void)
+..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c(14): warning:  #177-D: variable "btn_calc"  was declared but never referenced
+  static lv_obj_t *btn_calc;
 ..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.c: 1 warning, 0 errors
-compiling main.c...
 linking...
-Program Size: Code=201568 RO-data=31552 RW-data=1320 ZI-data=36512  
+Program Size: Code=202292 RO-data=31552 RW-data=1332 ZI-data=36500  
 FromELF: creating hex file...
 "..\..\Output\atk_f103.axf" - 0 Error(s), 1 Warning(s).
 
@@ -49,7 +47,7 @@ Package Vendor: Keil
   D:/Keil/Keil/STM32F1xx_DFP/2.4.1/Device/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

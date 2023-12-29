@@ -123,6 +123,7 @@
 ..\..\output\lv_calc.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/extra/libs/freetype/lv_freetype.h
 ..\..\output\lv_calc.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/extra/libs/rlottie/lv_rlottie.h
 ..\..\output\lv_calc.o: ..\..\Middlewares\LVGL\GUI\lvgl\src/extra/libs/ffmpeg/lv_ffmpeg.h
+..\..\output\lv_calc.o: ..\..\Middlewares\LVGL\GUI_APP\lv_mainstart.h
 ..\..\output\lv_calc.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\lv_calc.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdlib.h
 ..\..\output\lv_calc.o: D:\Keil\ARM\ARMV5\Bin\..\include\ctype.h

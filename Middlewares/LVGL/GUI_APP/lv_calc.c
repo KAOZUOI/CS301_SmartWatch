@@ -1,5 +1,5 @@
 #include "lv_calc.h"
-
+#include "lv_mainstart.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -309,7 +309,7 @@ static void lv_100ask_calc_constructor(const lv_obj_class_t * class_p, lv_obj_t 
     lv_obj_set_style_radius(calc->btnm, 0, 0);
     lv_obj_set_style_border_width(calc->btnm, 0, 0);
 
-    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(65));
+    lv_obj_set_size(calc->btnm, LV_PCT(100), LV_PCT(70));
     lv_btnmatrix_set_map(calc->btnm, btnm_map);
     lv_obj_add_event_cb(calc->btnm, calc_btnm_changed_event_cb, LV_EVENT_VALUE_CHANGED, obj);
 
@@ -404,6 +404,9 @@ static void calc_btnm_changed_event_cb(lv_event_t *e) {
                 strcat(&calc->calc_exp[0], txt);
                 calc->count++;
             }
+        }
+        else if (strcmp(txt, "!") == 0 ) {
+            init_main_page();
         }
         // clear
         else if (strcmp(txt, "C") == 0) {

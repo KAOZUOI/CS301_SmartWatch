@@ -11,28 +11,15 @@
 #define scr_act_width()  lv_obj_get_width(lv_scr_act())
 #define scr_act_height() lv_obj_get_height(lv_scr_act())
 const char* username = "KOZO";
-static lv_obj_t *btn_mode;          /* mode_change */
+static lv_obj_t *btn_calc;
+static lv_obj_t *btn_album;
+static lv_obj_t *btn_chat;
+static lv_obj_t *btn_game;
 
-/**
- * @brief  mode change按钮
- * @param  无
- * @return 无
- */
-static void lv_btn_mode(void)
-{
-    btn_mode = lv_btn_create(lv_scr_act());                                         /* 创建按钮 */
-    lv_obj_set_size(btn_mode, scr_act_width() / 4, scr_act_height() / 6);           /* 设置按钮大小 */
-    lv_obj_align(btn_mode, LV_ALIGN_CENTER, scr_act_width() / 3, 0);                /* 设置按钮位置 */
-    lv_obj_set_style_bg_color(btn_mode, lv_color_hex(0xef5f60), LV_STATE_DEFAULT);  /* 设置按钮背景颜色（默认） */
-    lv_obj_set_style_bg_color(btn_mode, lv_color_hex(0xff0000), LV_STATE_PRESSED);  /* 设置按钮背景颜色（按下） */
+// 如果要作为切换页面的回调函数，必须将其声明为 static，并且其中的obj必须为全局变量
+void lv_100ask_calc(void) {
+    //clean
 
-    lv_obj_t* label = lv_label_create(btn_mode);                                /* 创建加速按钮标签 */
-    lv_label_set_text(label, "mode");                                            /* 设置标签文本 */
-    lv_obj_set_align(label,LV_ALIGN_CENTER);                                        /* 设置标签位置 */
-}
-
-void lv_100ask_calc(void)
-{
 	lv_obj_t * calc = lv_100ask_calc_create(lv_scr_act());
     lv_obj_set_size(calc, scr_act_width(), scr_act_height());
     lv_obj_center(calc);
@@ -49,6 +36,27 @@ void lv_100ask_calc(void)
 
 }
 
+void lv_100ask_album() {
+    //label
+    lv_obj_t *label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "Album");
+    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 0);
+}
+
+void lv_100ask_chat() {
+    //label
+    lv_obj_t *label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "Chat");
+    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 0);
+}
+
+void lv_100ask_game() {
+    //label
+    lv_obj_t *label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "Game");
+    lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, 0);
+}
+
 static void update_time(lv_timer_t *timer) {
     char tbuf[24];
     // 假设 rtc_get_time() 函数更新了 calendar 结构体
@@ -56,6 +64,10 @@ static void update_time(lv_timer_t *timer) {
     sprintf(tbuf, "Time:%02d:%02d:%02d", calendar.hour, calendar.min, calendar.sec);
     // 更新标签的文本
     lv_label_set_text((lv_obj_t *)timer->user_data, tbuf);
+}
+static void change_color(lv_event_t *e) {
+    lv_obj_t *btn = lv_event_get_target(e);
+    lv_obj_set_style_bg_color(btn, lv_color_hex(0x00ff00), LV_STATE_PRESSED);
 }
 
 static void component_select_event_handler(lv_event_t *e) {
@@ -65,16 +77,52 @@ static void component_select_event_handler(lv_event_t *e) {
 
     if (strcmp(btn_label, "Album") == 0) {
         // 打开相册组件
+        lv_obj_clean(lv_scr_act());
+        btn_album = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn_album, scr_act_width() / 4, scr_act_height() / 6);
+        lv_obj_align(btn_album, LV_ALIGN_CENTER, 0, 0);
+        lv_obj_set_style_bg_color(btn_album, lv_color_hex(0xef5f60), LV_STATE_DEFAULT);
+        lv_obj_set_style_bg_color(btn_album, lv_color_hex(0xff0000), LV_STATE_PRESSED);
+
+        lv_obj_t* label = lv_label_create(btn_album);
+        lv_label_set_text(label, "album");
+        lv_obj_set_align(label,LV_ALIGN_CENTER);
     } else if (strcmp(btn_label, "Calc") == 0) {
         // 打开计算器组件
-        lv_obj_clean(lv_scr_act());
+        // clean btns
+        
         lv_100ask_calc();
+    } else if (strcmp(btn_label, "Chat") == 0) {
+        // 打开聊天组件
+        lv_obj_clean(lv_scr_act());
+        btn_chat = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn_chat, scr_act_width() / 4, scr_act_height() / 6);
+        lv_obj_align(btn_chat, LV_ALIGN_CENTER, 0, 0);
+        lv_obj_set_style_bg_color(btn_chat, lv_color_hex(0xef5f60), LV_STATE_DEFAULT);
+        lv_obj_set_style_bg_color(btn_chat, lv_color_hex(0xff0000), LV_STATE_PRESSED);
+
+        lv_obj_t* label = lv_label_create(btn_chat);
+        lv_label_set_text(label, "chat");
+        lv_obj_set_align(label,LV_ALIGN_CENTER);
+        lv_obj_add_event_cb(btn_chat, change_color, LV_EVENT_CLICKED, NULL);
+    } else if (strcmp(btn_label, "Game") == 0) {
+        // 打开游戏组件
+        lv_obj_clean(lv_scr_act());
+        btn_game = lv_btn_create(lv_scr_act());
+        lv_obj_set_size(btn_game, scr_act_width() / 4, scr_act_height() / 6);
+        lv_obj_align(btn_game, LV_ALIGN_CENTER, 0, 0);
+        lv_obj_set_style_bg_color(btn_game, lv_color_hex(0xef5f60), LV_STATE_DEFAULT);
+        lv_obj_set_style_bg_color(btn_game, lv_color_hex(0xff0000), LV_STATE_PRESSED);
+
+        lv_obj_t* label = lv_label_create(btn_game);
+        lv_label_set_text(label, "game");
+        lv_obj_set_align(label,LV_ALIGN_CENTER);
     }
-    // 添加其他组件的条件分支
 }
 
 
-static void init_main_page() {
+void init_main_page() {
+    lv_obj_clean(lv_scr_act());
     // 创建时间显示标签
     lv_obj_t *time_label_hour = lv_label_create(lv_scr_act());
     lv_obj_set_height(time_label_hour, LV_PCT(10));

@@ -3,5 +3,6 @@
 
 
 void lv_mainstart(void);
+void init_main_page();
 
 #endif

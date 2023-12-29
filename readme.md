@@ -9,6 +9,7 @@ Complete
 TODO: bug in RTC module(because battery out of power)  
 ### Chat Component
 ### Calculator Component 
+ Completed  
  lvgl_calc transplant from https://github.com/100askTeam/lv_lib_100ask.git  
  Completed: '^' operator and '(' ')' operator  
  Completed: Binary mode  
@@ -19,4 +20,6 @@ TODO: bug in RTC module(because battery out of power)
 ### Photo Album
  Completed  
 ### Additional Features
+ Completed (Game 2048)  
+ Game 2048 transplant from https://github.com/100askTeam/lv_lib_100ask.git  
 ### Report

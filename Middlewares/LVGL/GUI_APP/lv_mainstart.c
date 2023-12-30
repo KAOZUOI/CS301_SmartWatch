@@ -37,6 +37,8 @@ void lv_100ask_calc(void) {
 
 }
 
+
+
 void lv_100ask_album() {
     //label
     lv_obj_t *label = lv_label_create(lv_scr_act());
@@ -66,9 +68,74 @@ static void update_time(lv_timer_t *timer) {
     // 更新标签的文本
     lv_label_set_text((lv_obj_t *)timer->user_data, tbuf);
 }
+
 static void change_color(lv_event_t *e) {
     lv_obj_t *btn = lv_event_get_target(e);
     lv_obj_set_style_bg_color(btn, lv_color_hex(0x00ff00), LV_STATE_PRESSED);
+}
+
+static void init_mainpage_event_cb(lv_event_t *e) {
+    lv_obj_t *btn = lv_event_get_target(e);
+    init_main_page();
+}
+static void game_2048_event_cb(lv_event_t * e)
+{
+    lv_event_code_t code = lv_event_get_code(e);
+    lv_obj_t * obj_2048 = lv_event_get_target(e);
+    lv_obj_t * label = lv_event_get_user_data(e);
+    
+    if(code == LV_EVENT_VALUE_CHANGED) {
+        if (lv_100ask_2048_get_best_tile(obj_2048) >= 2048)
+            lv_label_set_text(label, "#00b329 YOU WIN! #");
+        else if(lv_100ask_2048_get_status(obj_2048))
+            lv_label_set_text(label, "#ff0000 GAME OVER! #");
+        else
+            lv_label_set_text_fmt(label, "SCORE: #ff00ff %d #", lv_100ask_2048_get_score(obj_2048));
+    }
+}
+
+static void new_game_btn_event_handler(lv_event_t * e)
+{
+    lv_obj_t * obj_2048 = lv_event_get_user_data(e);
+
+    lv_100ask_2048_set_new_game(obj_2048);
+}
+
+void lv_2048(void)
+{
+    lv_obj_t *overlay = lv_obj_create(lv_scr_act());
+    lv_obj_set_size(overlay, LV_PCT(100), LV_PCT(100));
+    lv_obj_set_style_bg_color(overlay, lv_color_white(), 0);
+    
+    /*Create 2048 game*/
+    lv_obj_t * obj_2048 = lv_100ask_2048_create(lv_scr_act());
+    lv_obj_set_size(obj_2048, 150, 150);
+    lv_obj_center(obj_2048);
+
+    /*Information*/
+    lv_obj_t * label = lv_label_create(lv_scr_act());
+    lv_label_set_recolor(label, true); 
+    lv_label_set_text_fmt(label, "SCORE: #ff00ff %d #", lv_100ask_2048_get_score(obj_2048));
+    lv_obj_align_to(label, obj_2048, LV_ALIGN_OUT_TOP_RIGHT, 0, 0);
+
+    lv_obj_add_event_cb(obj_2048, game_2048_event_cb, LV_EVENT_ALL, label);
+
+    /*New Game*/
+    lv_obj_t * btn = lv_btn_create(lv_scr_act());
+    lv_obj_align_to(btn, obj_2048, LV_ALIGN_OUT_BOTTOM_RIGHT, 0, 5);
+    lv_obj_add_event_cb(btn, new_game_btn_event_handler, LV_EVENT_CLICKED, obj_2048);
+
+    label = lv_label_create(btn);
+    lv_label_set_text(label, "New Game");
+    lv_obj_center(label);
+
+    /*Back*/
+    lv_obj_t* btn_back = lv_btn_create(lv_scr_act());
+    lv_obj_align_to(btn_back, obj_2048, LV_ALIGN_OUT_BOTTOM_LEFT, -70, 5);
+    lv_obj_add_event_cb(btn_back, init_mainpage_event_cb, LV_EVENT_CLICKED, NULL);
+    lv_obj_t* label_back = lv_label_create(btn_back);
+    lv_label_set_text(label_back, "Back Home");
+    lv_obj_center(label_back);
 }
 
 static void component_select_event_handler(lv_event_t *e) {
@@ -89,8 +156,6 @@ static void component_select_event_handler(lv_event_t *e) {
         lv_label_set_text(label, "album");
         lv_obj_set_align(label,LV_ALIGN_CENTER);
     } else if (strcmp(btn_label, "Calc") == 0) {
-        // 打开计算器组件
-        // clean btns
         
         lv_100ask_calc();
     } else if (strcmp(btn_label, "Chat") == 0) {
@@ -108,16 +173,8 @@ static void component_select_event_handler(lv_event_t *e) {
         lv_obj_add_event_cb(btn_chat, change_color, LV_EVENT_CLICKED, NULL);
     } else if (strcmp(btn_label, "Game") == 0) {
         // 打开游戏组件
-        lv_obj_clean(lv_scr_act());
-        btn_game = lv_btn_create(lv_scr_act());
-        lv_obj_set_size(btn_game, scr_act_width() / 4, scr_act_height() / 6);
-        lv_obj_align(btn_game, LV_ALIGN_CENTER, 0, 0);
-        lv_obj_set_style_bg_color(btn_game, lv_color_hex(0xef5f60), LV_STATE_DEFAULT);
-        lv_obj_set_style_bg_color(btn_game, lv_color_hex(0xff0000), LV_STATE_PRESSED);
-
-        lv_obj_t* label = lv_label_create(btn_game);
-        lv_label_set_text(label, "game");
-        lv_obj_set_align(label,LV_ALIGN_CENTER);
+        
+        lv_2048();
     }
 }
 
@@ -180,67 +237,13 @@ void init_main_page() {
     }
 }
 
-static void game_2048_event_cb(lv_event_t * e)
-{
-    lv_event_code_t code = lv_event_get_code(e);
-    lv_obj_t * obj_2048 = lv_event_get_target(e);
-    lv_obj_t * label = lv_event_get_user_data(e);
-    
-    if(code == LV_EVENT_VALUE_CHANGED) {
-        if (lv_100ask_2048_get_best_tile(obj_2048) >= 2048)
-            lv_label_set_text(label, "#00b329 YOU WIN! #");
-        else if(lv_100ask_2048_get_status(obj_2048))
-            lv_label_set_text(label, "#ff0000 GAME OVER! #");
-        else
-            lv_label_set_text_fmt(label, "SCORE: #ff00ff %d #", lv_100ask_2048_get_score(obj_2048));
-    }
-}
 
-static void new_game_btn_event_handler(lv_event_t * e)
-{
-    lv_obj_t * obj_2048 = lv_event_get_user_data(e);
-
-    lv_100ask_2048_set_new_game(obj_2048);
-}
-
-void lv_2048(void)
-{
-    /*Create 2048 game*/
-    lv_obj_t * obj_2048 = lv_100ask_2048_create(lv_scr_act());
-    lv_obj_set_size(obj_2048, 150, 150);
-    lv_obj_center(obj_2048);
-
-    /*Information*/
-    lv_obj_t * label = lv_label_create(lv_scr_act());
-    lv_label_set_recolor(label, true); 
-    lv_label_set_text_fmt(label, "SCORE: #ff00ff %d #", lv_100ask_2048_get_score(obj_2048));
-    lv_obj_align_to(label, obj_2048, LV_ALIGN_OUT_TOP_RIGHT, 0, 0);
-
-    lv_obj_add_event_cb(obj_2048, game_2048_event_cb, LV_EVENT_ALL, label);
-
-    /*New Game*/
-    lv_obj_t * btn = lv_btn_create(lv_scr_act());
-    lv_obj_align_to(btn, obj_2048, LV_ALIGN_OUT_BOTTOM_RIGHT, 0, 5);
-    lv_obj_add_event_cb(btn, new_game_btn_event_handler, LV_EVENT_CLICKED, obj_2048);
-
-    label = lv_label_create(btn);
-    lv_label_set_text(label, "New Game");
-    lv_obj_center(label);
-
-    /*Back*/
-    lv_obj_t* btn_back = lv_btn_create(lv_scr_act());
-    lv_obj_align_to(btn_back, obj_2048, LV_ALIGN_OUT_BOTTOM_LEFT, -70, 5);
-    lv_obj_add_event_cb(btn_back, change_color, LV_EVENT_CLICKED, NULL);
-    lv_obj_t* label_back = lv_label_create(btn_back);
-    lv_label_set_text(label_back, "Back Home");
-    lv_obj_center(label_back);
-}
 
 void lv_mainstart(void)
 {
 
     //lv_btn_mode();
     //lv_100ask_calc();
-    //init_main_page();
-    lv_2048();
+    init_main_page();
+    // lv_2048();
 }

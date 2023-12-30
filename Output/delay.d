@@ -3,7 +3,7 @@
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\core_cm3.h
-..\..\output\delay.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\delay.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\cmsis_version.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\cmsis_compiler.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -14,7 +14,7 @@
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\delay.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\..\output\delay.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\delay.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 ..\..\output\delay.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h
@@ -62,7 +62,7 @@
 ..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\FreeRTOS.h
 ..\..\output\delay.o: ..\..\User\FreeRTOSConfig.h
 ..\..\output\delay.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\delay.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\delay.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\projdefs.h
 ..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\portable.h
 ..\..\output\delay.o: ..\..\Middlewares\FreeRTOS\include\deprecated_definitions.h

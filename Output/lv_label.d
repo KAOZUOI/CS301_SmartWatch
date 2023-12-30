@@ -1,13 +1,13 @@
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\lv_label.c
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\lv_label.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../lv_conf_internal.h
-..\..\output\lv_label.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\lv_label.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../lv_conf_kconfig.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\examples\porting\../../lv_conf.h
-..\..\output\lv_label.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdarg.h
+..\..\output\lv_label.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdarg.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/lv_obj.h
-..\..\output\lv_label.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
-..\..\output\lv_label.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdbool.h
+..\..\output\lv_label.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\lv_label.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdbool.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_style.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/../font/lv_font.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/../font/lv_symbol_def.h
@@ -17,7 +17,7 @@
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_log.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_types.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_mem.h
-..\..\output\lv_label.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\lv_label.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_math.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_anim.h
 ..\..\output\lv_label.o: ..\..\Middlewares\LVGL\GUI\lvgl\src\widgets\../core/../misc/lv_txt.h

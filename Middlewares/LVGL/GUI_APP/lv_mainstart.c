@@ -22,6 +22,7 @@
 #include "lvgl.h"
 #include "./BSP/LED/led.h"
 #include "lv_calc.h"
+#include "picture.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -73,6 +74,6 @@ void lv_100ask_calc(void)
 void lv_mainstart(void)
 {
 
-    //lv_btn_mode();          /* mode change按钮 */
-		lv_100ask_calc();
+    // lv_btn_mode();          /* mode change按钮 */
+		// lv_100ask_calc();
 }

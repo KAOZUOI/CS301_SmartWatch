@@ -18,7 +18,10 @@
  * 修改说明
  * V1.0 20200531
  * 第一次发布
- * 
+ * V1.1 20200531
+ * 1, 兼容内存管理申请 g_norflash_buf 
+ * 2, 修改 norflash_write 函数, 以支持 g_norflash_buf 内存管理方式, 节省内存
+ *
  ****************************************************************************************************
  */
 
@@ -26,9 +29,10 @@
 #include "./SYSTEM/delay/delay.h"
 #include "./SYSTEM/usart/usart.h"
 #include "./BSP/NORFLASH/norflash.h"
+#include "./MALLOC/malloc.h"
 
 
-uint16_t g_norflash_type = W25Q128;     /* 默认是W25Q128 */
+uint16_t g_norflash_type = W25Q64;     /* 默认是W25Q128 */
 
 /**
  * @brief       初始化SPI NOR FLASH
@@ -91,7 +95,7 @@ static void norflash_wait_busy(void)
  * @param       无
  * @retval      无
  */
-static void norflash_write_enable(void)
+void norflash_write_enable(void)
 {
     NORFLASH_CS(0);
     spi1_read_write_byte(FLASH_WriteEnable);   /* 发送写使能 */

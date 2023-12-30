@@ -1,11 +1,11 @@
 ..\..\output\usmart.o: ..\..\Middlewares\USMART\usmart.c
-..\..\output\usmart.o: ..\..\Middlewares\./USMART/usmart.h
-..\..\output\usmart.o: ..\..\Middlewares\./USMART/usmart_port.h
+..\..\output\usmart.o: ..\..\Drivers\./USMART/usmart.h
+..\..\output\usmart.o: ..\..\Drivers\./USMART/usmart_port.h
 ..\..\output\usmart.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Include\core_cm3.h
-..\..\output\usmart.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\usmart.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Include\cmsis_version.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Include\cmsis_compiler.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -16,7 +16,7 @@
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\usmart.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\..\output\usmart.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\usmart.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h
@@ -61,5 +61,5 @@
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_hcd.h
 ..\..\output\usmart.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_mmc.h
 ..\..\output\usmart.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\usmart.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
-..\..\output\usmart.o: ..\..\Middlewares\./USMART/usmart_str.h
+..\..\output\usmart.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\usmart.o: ..\..\Drivers\./USMART/usmart_str.h

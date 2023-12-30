@@ -1,0 +1,21 @@
+#include "./SYSTEM/sys/sys.h"
+#include "./SYSTEM/usart/usart.h"
+#include "./SYSTEM/delay/delay.h"
+#include "./USMART/usmart.h"
+#include "./MALLOC/malloc.h"
+#include "./FATFS/exfuns/exfuns.h"
+#include "./TEXT/text.h"
+#include "./BSP/LED/led.h"
+#include "./BSP/LCD/lcd.h"
+#include "./BSP/KEY/key.h"
+#include "./BSP/TIMER/btim.h"
+#include "./BSP/TOUCH/touch.h"
+#include "./BSP/REMOTE/remote.h"
+#include "./BSP/SDMMC/spi_sdcard.h"
+#include "./BSP/NORFLASH/norflash.h"
+#include "./PICTURE/piclib.h"
+#include "string.h"
+#include "math.h"
+
+uint16_t pic_get_tnum(char *path);
+void picture_main();

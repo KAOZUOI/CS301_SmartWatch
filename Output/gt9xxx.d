@@ -1,12 +1,12 @@
 ..\..\output\gt9xxx.o: ..\..\Drivers\BSP\TOUCH\gt9xxx.c
-..\..\output\gt9xxx.o: D:\Keil\ARM\ARMV5\Bin\..\include\string.h
+..\..\output\gt9xxx.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\string.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\./BSP/LCD/lcd.h
-..\..\output\gt9xxx.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdlib.h
+..\..\output\gt9xxx.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdlib.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\./SYSTEM/sys/sys.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f103xe.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Include\core_cm3.h
-..\..\output\gt9xxx.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdint.h
+..\..\output\gt9xxx.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdint.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Include\cmsis_version.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Include\cmsis_compiler.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Include\cmsis_armcc.h
@@ -17,7 +17,7 @@
 ..\..\output\gt9xxx.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\Legacy/stm32_hal_legacy.h
-..\..\output\gt9xxx.o: D:\Keil\ARM\ARMV5\Bin\..\include\stddef.h
+..\..\output\gt9xxx.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stddef.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc_ex.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_gpio_ex.h
@@ -66,5 +66,5 @@
 ..\..\output\gt9xxx.o: ..\..\Drivers\./BSP/TOUCH/ft5206.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\./BSP/TOUCH/ctiic.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\./SYSTEM/usart/usart.h
-..\..\output\gt9xxx.o: D:\Keil\ARM\ARMV5\Bin\..\include\stdio.h
+..\..\output\gt9xxx.o: C:\Keil_v5\ARM\ARMV5\Bin\..\include\stdio.h
 ..\..\output\gt9xxx.o: ..\..\Drivers\./SYSTEM/delay/delay.h
